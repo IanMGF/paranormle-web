@@ -40,6 +40,12 @@ fn guess(guess: &GuessProp) -> Html {
         std::cmp::Ordering::Greater => "greater",
     };
     
+    let player_count_cls = match Ord::cmp(&guess.episode.players, &guess.correct.players) {
+        std::cmp::Ordering::Equal => "correct",
+        std::cmp::Ordering::Less => "less",
+        std::cmp::Ordering::Greater => "greater",
+    };
+    
     html! {
         <div class={ "guess" } style={ guess_css }>
             <div class={ "neutral thumbnail" }>
@@ -49,6 +55,7 @@ fn guess(guess: &GuessProp) -> Html {
             <div class={ campaign_cls }>{ guess.episode.campaign.as_str() }</div>
             <div class={ dur_cls }>{ guess.episode.dur_fmt() }</div>
             <div class={ date_cls }>{ guess.episode.date.year().to_string() }</div>
+            <div class={ player_count_cls }>{ guess.episode.players - 1 } { " jogadores" }</div>
         </div>
     }
 }
@@ -60,7 +67,7 @@ fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
     
-    let today_idx = 72;
+    let today_idx = 413413413 % episodes.len();
     let today_ep = &episodes[today_idx % episodes.len()].clone();
     
     let on_input = {

@@ -11,6 +11,7 @@ pub struct Episode {
     pub cover_url: String,
     pub cover_path: String,
     pub number: u32,
+    pub players: u8,
 }
 
 impl Episode {

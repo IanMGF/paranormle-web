@@ -6,7 +6,8 @@
         "campaign": "A Ordem Paranormal",
         "date": "29/02/2020",
         "number": 1,
-        "duration": 23376
+        "duration": 23376,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/c7/A_Ordem_Paranormal_Ep_2.jpg/revision/latest?cb=20200519175542&path-prefix=pt-br",
@@ -15,7 +16,8 @@
         "campaign": "A Ordem Paranormal",
         "date": "07/03/2020",
         "number": 2,
-        "duration": 28733
+        "duration": 28733,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/c5/O_Segredo_na_Floresta_Ep_1.jpg/revision/latest?cb=20230121021836&path-prefix=pt-br",
@@ -24,7 +26,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "11/04/2020",
         "number": 1,
-        "duration": 16610
+        "duration": 16610,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/e/eb/O_Segredo_na_Floresta_Ep_10.png/revision/latest?cb=20200615014601&path-prefix=pt-br",
@@ -33,7 +36,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "13/06/2020",
         "number": 10,
-        "duration": 14466
+        "duration": 14466,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/7/70/O_Segredo_na_Floresta_Ep_11.png/revision/latest?cb=20240730171125&path-prefix=pt-br",
@@ -42,7 +46,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "20/06/2020",
         "number": 11,
-        "duration": 15151
+        "duration": 15151,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/e/ec/O_Segredo_na_Floresta_Ep_12.jpg/revision/latest?cb=20200628031655&path-prefix=pt-br",
@@ -51,7 +56,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "27/06/2020",
         "number": 12,
-        "duration": 14168
+        "duration": 14168,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/af/O_Segredo_na_Floresta_Ep_13.jpg/revision/latest?cb=20240730233743&path-prefix=pt-br",
@@ -60,7 +66,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "04/07/2020",
         "number": 13,
-        "duration": 13679
+        "duration": 13679,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/9/99/O_Segredo_na_Floresta_Ep_14.png/revision/latest?cb=20240731020939&path-prefix=pt-br",
@@ -69,7 +76,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "11/07/2020",
         "number": 14,
-        "duration": 12643
+        "duration": 12643,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/e/ec/O_Segredo_na_Floresta_Ep_15.jpg/revision/latest?cb=20210510235323&path-prefix=pt-br",
@@ -78,7 +86,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "18/07/2020",
         "number": 15,
-        "duration": 14582
+        "duration": 14582,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/a1/O_Segredo_na_Floresta_Ep_Final.png/revision/latest?cb=20240731164715&path-prefix=pt-br",
@@ -87,7 +96,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "25/07/2020",
         "number": 16,
-        "duration": 14338
+        "duration": 14338,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/7/7f/O_Segredo_na_Floresta_Ep_2.jpg/revision/latest?cb=20200705225919&path-prefix=pt-br",
@@ -96,7 +106,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "18/04/2020",
         "number": 2,
-        "duration": 17801
+        "duration": 17801,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/6/6a/O_Segredo_na_Floresta_Ep_3.jpg/revision/latest?cb=20230121021513&path-prefix=pt-br",
@@ -105,7 +116,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "25/04/2020",
         "number": 3,
-        "duration": 15697
+        "duration": 15697,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/2/2b/O_Segredo_na_Floresta_Ep_4.jpg/revision/latest?cb=20230121021402&path-prefix=pt-br",
@@ -114,7 +126,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "02/05/2020",
         "number": 4,
-        "duration": 15908
+        "duration": 15908,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/d/d0/O_Segredo_na_Floresta_Ep_5.jpg/revision/latest?cb=20200705223703&path-prefix=pt-br",
@@ -123,7 +136,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "08/05/2020",
         "number": 5,
-        "duration": 17469
+        "duration": 17469,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/b/b2/O_Segredo_na_Floresta_Ep_6.jpg/revision/latest?cb=20240731022829&path-prefix=pt-br",
@@ -132,7 +146,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "16/05/2020",
         "number": 6,
-        "duration": 14878
+        "duration": 14878,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/5/5c/O_Segredo_na_Floresta_Ep_7.png/revision/latest?cb=20240729171912&path-prefix=pt-br",
@@ -141,7 +156,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "23/05/2020",
         "number": 7,
-        "duration": 15997
+        "duration": 15997,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/e/e3/O_Segredo_na_Floresta_Ep_8.png/revision/latest?cb=20240729231452&path-prefix=pt-br",
@@ -150,7 +166,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "30/05/2020",
         "number": 8,
-        "duration": 16007
+        "duration": 16007,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/9/98/O_Segredo_na_Floresta_Ep_9.png/revision/latest?cb=20200616194005&path-prefix=pt-br",
@@ -159,7 +176,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "06/06/2020",
         "number": 9,
-        "duration": 15041
+        "duration": 15041,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/5/5a/Revelando_O_Segredo_na_Floresta.png/revision/latest?cb=20200801211534&path-prefix=pt-br",
@@ -168,7 +186,8 @@
         "campaign": "O Segredo na Floresta",
         "date": "01/08/2020",
         "number": 17,
-        "duration": 7780
+        "duration": 7780,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/3/3c/Desconjura%C3%A7%C3%A3o_Ep_1.jpg/revision/latest?cb=20201105194832&path-prefix=pt-br",
@@ -177,7 +196,8 @@
         "campaign": "Desconjuração",
         "date": "31/10/2020",
         "number": 1,
-        "duration": 16018
+        "duration": 16018,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/d/db/Desconjura%C3%A7%C3%A3o_Ep_10.png/revision/latest?cb=20210317150642&path-prefix=pt-br",
@@ -186,7 +206,8 @@
         "campaign": "Desconjuração",
         "date": "13/03/2021",
         "number": 10,
-        "duration": 17174
+        "duration": 17174,
+        "players": 9
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/d/d8/Desconjura%C3%A7%C3%A3o_Ep_11.jpg/revision/latest?cb=20210321025418&path-prefix=pt-br",
@@ -195,7 +216,8 @@
         "campaign": "Desconjuração",
         "date": "20/03/2021",
         "number": 11,
-        "duration": 15125
+        "duration": 15125,
+        "players": 9
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/1/1e/Desconjura%C3%A7%C3%A3o_Ep_12.png/revision/latest?cb=20210327212737&path-prefix=pt-br",
@@ -204,7 +226,8 @@
         "campaign": "Desconjuração",
         "date": "27/03/2021",
         "number": 12,
-        "duration": 14510
+        "duration": 14510,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/cc/Desconjura%C3%A7%C3%A3o_Ep_13.png/revision/latest?cb=20210404021900&path-prefix=pt-br",
@@ -213,7 +236,8 @@
         "campaign": "Desconjuração",
         "date": "03/04/2021",
         "number": 13,
-        "duration": 16744
+        "duration": 16744,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/8/8f/Desconjura%C3%A7%C3%A3o_Ep_14.png/revision/latest?cb=20210411005305&path-prefix=pt-br",
@@ -222,7 +246,8 @@
         "campaign": "Desconjuração",
         "date": "10/04/2021",
         "number": 14,
-        "duration": 13847
+        "duration": 13847,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/cb/Desconjura%C3%A7%C3%A3o_Ep_15.png/revision/latest?cb=20210418012017&path-prefix=pt-br",
@@ -231,7 +256,8 @@
         "campaign": "Desconjuração",
         "date": "17/04/2021",
         "number": 15,
-        "duration": 14705
+        "duration": 14705,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/cb/Desconjura%C3%A7%C3%A3o_Ep_16.png/revision/latest?cb=20210425014959&path-prefix=pt-br",
@@ -240,7 +266,8 @@
         "campaign": "Desconjuração",
         "date": "24/04/2021",
         "number": 16,
-        "duration": 16450
+        "duration": 16450,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/8/8e/Desconjura%C3%A7%C3%A3o_Ep_17.png/revision/latest?cb=20210502021629&path-prefix=pt-br",
@@ -249,7 +276,8 @@
         "campaign": "Desconjuração",
         "date": "01/05/2021",
         "number": 17,
-        "duration": 15478
+        "duration": 15478,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/8/87/Desconjura%C3%A7%C3%A3o_Ep_18.png/revision/latest?cb=20210509024954&path-prefix=pt-br",
@@ -258,7 +286,8 @@
         "campaign": "Desconjuração",
         "date": "08/05/2021",
         "number": 18,
-        "duration": 17736
+        "duration": 17736,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/6/65/Desconjura%C3%A7%C3%A3o_Ep_19.jpg/revision/latest?cb=20210516022624&path-prefix=pt-br",
@@ -267,7 +296,8 @@
         "campaign": "Desconjuração",
         "date": "15/05/2021",
         "number": 19,
-        "duration": 18833
+        "duration": 18833,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/7/7f/Desconjura%C3%A7%C3%A3o_Ep_2.jpg/revision/latest?cb=20210205033011&path-prefix=pt-br",
@@ -276,7 +306,8 @@
         "campaign": "Desconjuração",
         "date": "07/11/2020",
         "number": 2,
-        "duration": 16827
+        "duration": 16827,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/ab/Desconjura%C3%A7%C3%A3o_Ep_Final.png/revision/latest?cb=20210523024311&path-prefix=pt-br",
@@ -285,7 +316,8 @@
         "campaign": "Desconjuração",
         "date": "22/05/2021",
         "number": 20,
-        "duration": 17066
+        "duration": 17066,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/b/b4/Desconjura%C3%A7%C3%A3o_Ep_3.jpg/revision/latest?cb=20210205032405&path-prefix=pt-br",
@@ -294,7 +326,18 @@
         "campaign": "Desconjuração",
         "date": "14/11/2020",
         "number": 3,
-        "duration": 16719
+        "duration": 16719,
+        "players": 8
+    },
+    {
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/4/4e/Desconjura%C3%A7%C3%A3o_Ep_4.png/revision/latest?cb=20210404201919&path-prefix=pt-br",
+        "cover_path": "covers/Desconjuração4.png",
+        "title": "Orfanato",
+        "campaign": "Desconjuração",
+        "date": "21/11/2020",
+        "number": 4,
+        "duration": 14881,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/ab/Desconjura%C3%A7%C3%A3o_Ep_5.png/revision/latest?cb=20201128205420&path-prefix=pt-br",
@@ -303,7 +346,8 @@
         "campaign": "Desconjuração",
         "date": "28/11/2020",
         "number": 5,
-        "duration": 15922
+        "duration": 15922,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/e/e3/Desconjura%C3%A7%C3%A3o_Ep_6.jpg/revision/latest?cb=20201205205248&path-prefix=pt-br",
@@ -312,7 +356,18 @@
         "campaign": "Desconjuração",
         "date": "05/12/2020",
         "number": 6,
-        "duration": 24463
+        "duration": 24463,
+        "players": 8
+    },
+    {
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/4/44/Desconjura%C3%A7%C3%A3o_Ep_7.jpg/revision/latest?cb=20201212205215&path-prefix=pt-br",
+        "cover_path": "covers/Desconjuração7.png",
+        "title": "Anfitrião",
+        "campaign": "Desconjuração",
+        "date": "12/12/2020",
+        "number": 7,
+        "duration": 17859,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/3/3c/Desconjura%C3%A7%C3%A3o_Ep_8.png/revision/latest?cb=20201220005628&path-prefix=pt-br",
@@ -321,7 +376,8 @@
         "campaign": "Desconjuração",
         "date": "19/12/2020",
         "number": 8,
-        "duration": 14597
+        "duration": 14597,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/3/32/Desconjura%C3%A7%C3%A3o_Ep_9.png/revision/latest?cb=20210309211820&path-prefix=pt-br",
@@ -330,7 +386,8 @@
         "campaign": "Desconjuração",
         "date": "06/03/2021",
         "number": 9,
-        "duration": 16260
+        "duration": 16260,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/f/f9/Revelando_a_Desconjura%C3%A7%C3%A3o_Twitch.png/revision/latest?cb=20230911160127&path-prefix=pt-br",
@@ -339,7 +396,8 @@
         "campaign": "Desconjuração",
         "date": "29/05/2021",
         "number": 21,
-        "duration": 10943
+        "duration": 10943,
+        "players": 10
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/0/01/Calamidade_Ep_0.jpg/revision/latest?cb=20210909213243&path-prefix=pt-br",
@@ -348,7 +406,8 @@
         "campaign": "Calamidade",
         "date": "04/09/2021",
         "number": 0,
-        "duration": 17460
+        "duration": 17460,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/a5/Calamidade_Ep_1.png/revision/latest?cb=20210921162909&path-prefix=pt-br",
@@ -357,7 +416,8 @@
         "campaign": "Calamidade",
         "date": "11/09/2021",
         "number": 1,
-        "duration": 11783
+        "duration": 11783,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/f/ff/Calamidade_Ep_10.png/revision/latest?cb=20211113204729&path-prefix=pt-br",
@@ -366,7 +426,8 @@
         "campaign": "Calamidade",
         "date": "13/11/2021",
         "number": 10,
-        "duration": 18449
+        "duration": 18449,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/9/9c/Calamidade_Ep_11.png/revision/latest?cb=20211120204559&path-prefix=pt-br",
@@ -375,7 +436,8 @@
         "campaign": "Calamidade",
         "date": "20/11/2021",
         "number": 11,
-        "duration": 16605
+        "duration": 16605,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/2/28/Calamidade_Ep_12_Twitch.png/revision/latest?cb=20211202143949&path-prefix=pt-br",
@@ -384,7 +446,8 @@
         "campaign": "Calamidade",
         "date": "27/11/2021",
         "number": 12,
-        "duration": 17632
+        "duration": 17632,
+        "players": 9
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/d/d1/Calamidade_Ep_2.png/revision/latest?cb=20210918231130&path-prefix=pt-br",
@@ -393,7 +456,8 @@
         "campaign": "Calamidade",
         "date": "18/09/2021",
         "number": 2,
-        "duration": 19012
+        "duration": 19012,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/2/23/Calamidade_Ep_3.png/revision/latest?cb=20210925211130&path-prefix=pt-br",
@@ -402,7 +466,8 @@
         "campaign": "Calamidade",
         "date": "25/09/2021",
         "number": 3,
-        "duration": 15438
+        "duration": 15438,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/a6/Calamidade_Ep_4.png/revision/latest?cb=20211002205622&path-prefix=pt-br",
@@ -411,7 +476,8 @@
         "campaign": "Calamidade",
         "date": "02/10/2021",
         "number": 4,
-        "duration": 15983
+        "duration": 15983,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/9/90/Calamidade_Ep_5.png/revision/latest?cb=20211009205441&path-prefix=pt-br",
@@ -420,7 +486,18 @@
         "campaign": "Calamidade",
         "date": "09/10/2021",
         "number": 5,
-        "duration": 16816
+        "duration": 16816,
+        "players": 7
+    },
+    {
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/c9/Calamidade_Ep_6.png/revision/latest?cb=20211016210603&path-prefix=pt-br",
+        "cover_path": "covers/Calamidade6.png",
+        "title": "Jogos",
+        "campaign": "Calamidade",
+        "date": "16/10/2021",
+        "number": 6,
+        "duration": 20345,
+        "players": 7
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/4/43/Calamidade_Ep_7.png/revision/latest?cb=20211023204940&path-prefix=pt-br",
@@ -429,7 +506,8 @@
         "campaign": "Calamidade",
         "date": "23/10/2021",
         "number": 7,
-        "duration": 19636
+        "duration": 19636,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/3/38/Calamidade_Ep_8.png/revision/latest?cb=20211030205017&path-prefix=pt-br",
@@ -438,7 +516,8 @@
         "campaign": "Calamidade",
         "date": "30/10/2021",
         "number": 8,
-        "duration": 18624
+        "duration": 18624,
+        "players": 8
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/a6/Calamidade_Ep_9.png/revision/latest?cb=20211106205050&path-prefix=pt-br",
@@ -447,7 +526,18 @@
         "campaign": "Calamidade",
         "date": "06/11/2021",
         "number": 9,
-        "duration": 14798
+        "duration": 14798,
+        "players": 7
+    },
+    {
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/b/bf/Sinais_do_Outro_Lado_Ep_1.png/revision/latest?cb=20221103173040&path-prefix=pt-br",
+        "cover_path": "covers/Sinais do Outro Lado1.png",
+        "title": "Alheios",
+        "campaign": "Sinais do Outro Lado",
+        "date": "29/10/2022",
+        "number": 1,
+        "duration": 19221,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/8/83/Sinais_do_Outro_Lado_Ep_2.png/revision/latest?cb=20221105211802&path-prefix=pt-br",
@@ -456,7 +546,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "05/11/2022",
         "number": 2,
-        "duration": 18846
+        "duration": 18846,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/1/1f/Sinais_do_Outro_Lado_Ep_3.png/revision/latest?cb=20221113010711&path-prefix=pt-br",
@@ -465,7 +556,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "12/11/2022",
         "number": 3,
-        "duration": 16960
+        "duration": 16960,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/a/af/Sinais_do_Outro_Lado_Ep_4.png/revision/latest?cb=20221119210651&path-prefix=pt-br",
@@ -474,7 +566,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "19/11/2022",
         "number": 4,
-        "duration": 17160
+        "duration": 17160,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/5/50/Sinais_do_Outro_Lado_Ep_5.png/revision/latest?cb=20221126205341&path-prefix=pt-br",
@@ -483,7 +576,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "26/11/2022",
         "number": 5,
-        "duration": 16420
+        "duration": 16420,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/ce/Sinais_do_Outro_Lado_Ep_6.png/revision/latest?cb=20221203210716&path-prefix=pt-br",
@@ -492,7 +586,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "03/12/2022",
         "number": 6,
-        "duration": 16456
+        "duration": 16456,
+        "players": 5
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/d/de/Sinais_do_Outro_Lado_Ep_Final.png/revision/latest?cb=20221210210145&path-prefix=pt-br",
@@ -501,7 +596,8 @@
         "campaign": "Sinais do Outro Lado",
         "date": "10/12/2022",
         "number": 7,
-        "duration": 17090
+        "duration": 17090,
+        "players": 6
     },
     {
         "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/4/4c/Revelando_Sinais_do_Outro_Lado.png/revision/latest?cb=20221218002244&path-prefix=pt-br",
@@ -510,6 +606,7 @@
         "campaign": "Sinais do Outro Lado",
         "date": "17/12/2022",
         "number": 8,
-        "duration": 8230
+        "duration": 8230,
+        "players": 6
     }
 ]
