@@ -1,58 +1,40 @@
-name: Deploy RustWASM webapp
+name: Deploy Yew App to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches:
+      - main 
+
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cargo/bin
-            ~/.cargo/git
-            ~/.cargo/registry
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Install Trunk
-        uses: jetli/trunk-action@v0.4.0
-        with:
-          # Optional version of trunk to install(eg. 'v0.16.0', 'latest')
-          version: "latest"
-      - name: Add WASM build target
+      - name: 🦀 Install Rust and Trunk
         run: |
+          rustup update stable
           rustup target add wasm32-unknown-unknown
-      - name: Run trunk build
-        run: RUSTFLAGS='--cfg getrandom_backend="wasm_js"' trunk build --public-url "/paranormle" --release
+          cargo install --locked trunk
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
+      - name: ⚙️ Build the Yew App
+        run: |
+          trunk build --release --public-url /paranormle/ --dist docs
+
+      - name: 📤 Upload Artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist"
+          path: docs
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
