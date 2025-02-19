@@ -22,7 +22,7 @@ pub fn get_day_guess_color() -> String {
     let now = chrono::Local::now();
     let day = now.day() as usize;
     
-    const COLORS: [&str; 5] = ["#9c091d", "#000000", "#bdb55b", "#b43cba", "#4848c2"];
+    const COLORS: [&str; 5] = ["#9c091d", "#000000", "#bdb55b", "#b43cba", "#bdbdbd"];
 
     let color_idx = day % COLORS.len();
     String::from(COLORS[color_idx])
