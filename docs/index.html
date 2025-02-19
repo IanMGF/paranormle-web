@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-br">
+    <base href="/paranormle-web/">
+    
+    <link rel="stylesheet" type="text/css" href="res/style.css" />
+    <head>
+        <title>Paranormle</title>
+    <link rel="modulepreload" href="/paranormle/paranormle-6636989c3b078de1.js" crossorigin="anonymous" integrity="sha384-sf9aSKf7CN+s/Ur98oOQVb+saHE0vTkGUUAq+EWQa0deoF5My2//xXiYjrOrN9tf"><link rel="preload" href="/paranormle/paranormle-6636989c3b078de1_bg.wasm" crossorigin="anonymous" integrity="sha384-R6cR5xq5KZZE1rubk3pJk++1nvd65r1GLdsa6r03Q/XrSvhokTopSK2k5m6Wj/GY" as="fetch" type="application/wasm"></head>
+    <body>
+
+    
+<script type="module">
+import init, * as bindings from '/paranormle/paranormle-6636989c3b078de1.js';
+const wasm = await init({ module_or_path: '/paranormle/paranormle-6636989c3b078de1_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
