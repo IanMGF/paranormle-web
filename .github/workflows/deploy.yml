@@ -20,20 +20,19 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🦀 Install Rust and Trunk
+      - name: 🦀 Install Rust, WASM Target, and Trunk
         run: |
           rustup update stable
           rustup target add wasm32-unknown-unknown
           cargo install --locked trunk
 
-      - name: ⚙️ Build the Yew App
-        run: |
-          trunk build --release --public-url /paranormle-web/ --dist docs
+      - name: ⚙️ Build Yew App
+        run: trunk build --release --public-url /paranormle-web/ --dist dist
 
       - name: 📤 Upload Artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: dist
 
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
