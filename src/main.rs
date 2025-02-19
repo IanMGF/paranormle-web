@@ -1,5 +1,5 @@
-use paranormle::mist::Mist;
 use paranormle::guesser::Guesser;
+use paranormle::mist::Mist;
 use yew::prelude::*;
 
 #[function_component(App)]
@@ -10,6 +10,12 @@ fn app() -> Html {
             <h1>{ "Paranormle" }</h1>
             <Guesser />
             <Mist />
+
+            <span id="creditos-wpp">
+                <a href="https://x.com/desconjurado/status/1543281129385594881">
+                    { "Wallpapers por Sumo (@desconjurado)" }
+                </a>
+            </span>
         </div>
     }
 }

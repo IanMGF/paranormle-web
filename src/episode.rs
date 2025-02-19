@@ -3,15 +3,16 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub struct Episode {
-    pub title: String,
-    pub campaign: String,
     #[serde(with = "date_format")]
     pub date: NaiveDate,
+    pub title: String,
+    pub campaign: String,
     pub duration: u64,
     pub cover_url: String,
     pub cover_path: String,
     pub number: u32,
     pub players: u8,
+    pub has_cinematic: bool,
 }
 
 impl Episode {
@@ -25,14 +26,11 @@ impl Episode {
 
 mod date_format {
     use chrono::{Datelike, NaiveDate};
-    use serde::{self, Deserialize, Serializer, Deserializer};
+    use serde::{self, Deserialize, Deserializer, Serializer};
 
     const FORMAT: &str = "%d/%m/%Y";
 
-    pub fn serialize<S>(
-        date: &NaiveDate,
-        serializer: S,
-    ) -> Result<S::Ok, S::Error>
+    pub fn serialize<S>(date: &NaiveDate, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,
     {
@@ -40,12 +38,10 @@ mod date_format {
         serializer.serialize_str(&s)
     }
 
-    pub fn deserialize<'de, D: Deserializer<'de>>(
-        deserializer: D,
-    ) -> Result<NaiveDate, D::Error>
-    {
+    pub fn deserialize<'de, D: Deserializer<'de>>(deserializer: D) -> Result<NaiveDate, D::Error> {
         let s = String::deserialize(deserializer)?;
         let dt = NaiveDate::parse_from_str(&s, FORMAT).map_err(serde::de::Error::custom)?;
-        NaiveDate::from_ymd_opt(dt.year(), dt.month(), dt.day()).ok_or_else(|| serde::de::Error::custom("invalid date"))
+        NaiveDate::from_ymd_opt(dt.year(), dt.month(), dt.day())
+            .ok_or_else(|| serde::de::Error::custom("invalid date"))
     }
 }

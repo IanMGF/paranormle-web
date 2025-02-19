@@ -1,3 +1,19 @@
+#creditos-wpp {
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+}
+
+#creditos-wpp > a { 
+    color: white;
+    text-decoration: none;
+}
+#creditos-wpp > a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+
 @font-face {
     font-family: AdobeHebrew;
     src: url("adobehebrew-regular.otf") format("opentype");
@@ -44,6 +60,7 @@ body {
     display: flex;
     justify-content: center;
     margin-block: 5px;
+    margin: 0px 0px;
 }
 
 .guess {
@@ -83,15 +100,18 @@ body {
     border-radius: 5px;
     
     opacity: 0;
-    animation: fadeIn 1.5s forwards;
+    animation: fadeIn 1s forwards;
 }
 
 .guess > div > img {
     width: 175px;
     border-radius: 2px;
 }
+
+.guess > .thumbnail { background-color: #000000aa }
+
 .guess > .thumbnail > .title { 
-    font-size: 19px;
+    font-size: 16px;
     align-content: center;
     text-shadow: 2px 2px 7px black;
     height: 75px;
@@ -121,6 +141,41 @@ body {
 
 #guesses {
     padding: 0 0 0 0;
+    margin: 0px 0px
+}
+
+.titles {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+}
+
+.titles-wrapper { 
+    display: flex;
+    justify-content: center;
+    margin-block: 5px;
+    margin: 10px 0 0 0;
+}
+
+.titles > div {
+    font-family: AdobeHebrew;
+    font-weight: bolder;
+    font-size: 18px;
+    width: 175px;
+    height: 75px;
+    margin: 5px 5px 0px 5px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    background-size: contain;
+    border-radius: 5px;
+    background-color: #000000cc;
 }
 
 @keyframes fadeIn {
