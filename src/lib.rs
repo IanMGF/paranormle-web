@@ -1,2 +1,2 @@
 pub mod episode;
-pub mod backgrond;
+pub mod theme;
