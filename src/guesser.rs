@@ -107,7 +107,7 @@ pub fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
 
-    let today_idx = 413413413 % episodes.len();
+    let today_idx = (413 * 413) % episodes.len();
     let today_ep = &episodes[today_idx].clone();
 
     let on_input = Callback::from({
