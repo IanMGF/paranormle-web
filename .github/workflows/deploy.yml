@@ -28,7 +28,7 @@ jobs:
 
       - name: ⚙️ Build the Yew App
         run: |
-          trunk build --release --public-url /paranormle/ --dist docs
+          trunk build --release --public-url /paranormle-web/ --dist docs
 
       - name: 📤 Upload Artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
