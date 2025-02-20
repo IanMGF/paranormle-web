@@ -1,3 +1,4 @@
+use web_sys::HtmlInputElement;
 use crate::{episode::Episode, theme};
 use chrono::Datelike;
 use yew::prelude::*;
@@ -110,6 +111,34 @@ pub fn guesser() -> Html {
     let today_idx = (413 * 413) % episodes.len();
     let today_ep = &episodes[today_idx].clone();
 
+    let on_key_up = Callback::from({
+        let guesses = guesses.clone();
+        let correct = today_ep.clone();
+        let episodes = episodes.clone();
+        
+        move |e: KeyboardEvent| {
+            let input: HtmlInputElement = e.target_unchecked_into();
+            let guess = input.value();
+            
+            if guesses.iter().any(|ep| ep == &correct) {
+                return;
+            }
+            if guesses.iter().any(|ep| ep.title == guess) {
+                return;
+            }
+            
+            let Some(ep) = episodes.iter().find(|ep| ep.title == guess) else {
+                return;
+            };
+
+            if e.key() == "Enter" {
+                let mut g = guesses.to_vec();
+                g.push(ep.clone());
+                guesses.set(g);
+            }
+        }
+    });
+    
     let on_input = Callback::from({
         let episodes = episodes.clone();
         let guesses = guesses.clone();
@@ -145,7 +174,7 @@ pub fn guesser() -> Html {
 
     html! {
         <>
-            <input oninput={on_input.clone()} list={ "episodes" } type={ "text" } placeholder={ "Adivinhe o episódio..." } id="episode-guess" style="width:895px;" />
+            <input onkeyup={on_key_up.clone()} oninput={on_input.clone()} list={ "episodes" } type={ "text" } placeholder={ "Adivinhe o episódio..." } id="episode-guess" style="width:895px;" />
             <datalist id="episodes"> { options } </datalist>
             < Titles/ >
             <ul id="guesses"> {

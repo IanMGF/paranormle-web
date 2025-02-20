@@ -756,7 +756,9 @@ dependencies = [
  "log",
  "serde",
  "serde_json",
+ "wasm-bindgen",
  "wasm-logger",
+ "web-sys",
  "yew",
 ]
 
