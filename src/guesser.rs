@@ -1,6 +1,6 @@
-use web_sys::HtmlInputElement;
 use crate::{episode::Episode, theme};
 use chrono::Datelike;
+use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 #[derive(Properties, Clone, PartialEq, Eq)]
@@ -25,13 +25,13 @@ pub fn guess(guess: &GuessProp) -> Html {
         ),
         false => String::from("background-color: #17171777;"),
     };
-    
+
     let ep_number_cls = match Ord::cmp(&guess.episode.number, &guess.correct.number) {
         std::cmp::Ordering::Equal => "correct",
         std::cmp::Ordering::Less => "less",
         std::cmp::Ordering::Greater => "greater",
     };
-    
+
     let campaign_cls = match guess.episode.campaign == guess.correct.campaign {
         true => "correct",
         false => "incorrect",
@@ -74,7 +74,7 @@ pub fn guess(guess: &GuessProp) -> Html {
 
     let fade_in = |dur: f64| format!("animation-delay: {}s;", dur);
 
-    let animation_delay = 3.13 / 5.0;
+    let animation_delay = 3.13 / 6.0;
 
     html! {
         <div class={ "guess" } style={ guess_css }>
@@ -123,18 +123,18 @@ pub fn guesser() -> Html {
         let guesses = guesses.clone();
         let correct = today_ep.clone();
         let episodes = episodes.clone();
-        
+
         move |e: KeyboardEvent| {
             let input: HtmlInputElement = e.target_unchecked_into();
             let guess = input.value();
-            
+
             if guesses.iter().any(|ep| ep == &correct) {
                 return;
             }
             if guesses.iter().any(|ep| ep.title == guess) {
                 return;
             }
-            
+
             let Some(ep) = episodes.iter().find(|ep| ep.title == guess) else {
                 return;
             };
@@ -146,7 +146,7 @@ pub fn guesser() -> Html {
             }
         }
     });
-    
+
     let on_input = Callback::from({
         let episodes = episodes.clone();
         let guesses = guesses.clone();

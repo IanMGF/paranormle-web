@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 pub struct Episode {
     #[serde(with = "date_format")]
     pub date: NaiveDate,
+    pub wiki_url: String,
     pub title: String,
     pub campaign: String,
     pub duration: u64,
