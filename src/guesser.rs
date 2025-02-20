@@ -25,7 +25,13 @@ pub fn guess(guess: &GuessProp) -> Html {
         ),
         false => String::from("background-color: #17171777;"),
     };
-
+    
+    let ep_number_cls = match Ord::cmp(&guess.episode.number, &guess.correct.number) {
+        std::cmp::Ordering::Equal => "correct",
+        std::cmp::Ordering::Less => "less",
+        std::cmp::Ordering::Greater => "greater",
+    };
+    
     let campaign_cls = match guess.episode.campaign == guess.correct.campaign {
         true => "correct",
         false => "incorrect",
@@ -56,6 +62,7 @@ pub fn guess(guess: &GuessProp) -> Html {
 
     let thumb_url = format!("res/{}", guess.episode.cover_path);
     let title = guess.episode.title.as_str();
+    let ep_number = guess.episode.number.to_string();
     let campaign = guess.episode.campaign.as_str();
     let dur = guess.episode.dur_fmt();
     let date = guess.episode.date.year().to_string();
@@ -75,11 +82,12 @@ pub fn guess(guess: &GuessProp) -> Html {
                 <img class={"thumb-img"} src={ thumb_url } />
                 <span class={"title"}>{ title }</span>
             </div>
-            <div class={ campaign_cls } style={ fade_in(animation_delay) }>{ campaign }</div>
-            <div class={ dur_cls } style={ fade_in(2.0 * animation_delay) }>{ dur }</div>
-            <div class={ date_cls } style={ fade_in(3.0 * animation_delay) }>{ date }</div>
-            <div class={ player_count_cls } style={ fade_in(4.0 * animation_delay) }>{ player_count } { " jogadores" }</div>
-            <div class={ cinematic_cls } style={ fade_in(5.0 * animation_delay) }>{ has_cinematic }</div>
+            <div class={ ep_number_cls } style={ fade_in(1.0 * animation_delay) }>{ ep_number }</div>
+            <div class={ campaign_cls } style={ fade_in(2.0 * animation_delay) }>{ campaign }</div>
+            <div class={ dur_cls } style={ fade_in(3.0 * animation_delay) }>{ dur }</div>
+            <div class={ date_cls } style={ fade_in(4.0 * animation_delay) }>{ date }</div>
+            <div class={ player_count_cls } style={ fade_in(5.0 * animation_delay) }>{ player_count } { " jogadores" }</div>
+            <div class={ cinematic_cls } style={ fade_in(6.0 * animation_delay) }>{ has_cinematic }</div>
         </div>
     }
 }
@@ -90,7 +98,7 @@ fn titles() -> Html {
         <div class={ "titles-wrapper" }>
             <div class={ "titles" }>
                 <div class={ "neutral" }>{ "Título" }</div>
-                // <div class={ "neutral" }>{ "Nro do Episódio" }</div>
+                <div class={ "neutral" }>{ "Nro do Episódio" }</div>
                 <div class={ "neutral" }>{ "Campanha" }</div>
                 <div class={ "neutral" }>{ "Duração" }</div>
                 <div class={ "neutral" }>{ "Ano" }</div>
