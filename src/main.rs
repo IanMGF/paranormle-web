@@ -1,12 +1,15 @@
 use paranormle::guesser::Guesser;
 use paranormle::mist::Mist;
+use paranormle::theme::Theme;
 use yew::prelude::*;
 
 #[function_component(App)]
 fn app() -> Html {
-    let bg_img = paranormle::theme::get_day_bg();
+    let bg_img = Theme::gen_day_element().get_bg();
+    let bg_style = format!("background-image: url(\'res/backgrounds/{}\');", bg_img);
+
     html! {
-        <div id={ "container" } style={ format!("background-image: url(\'res/backgrounds/{}\');", bg_img) }>
+        <div id={ "container" } style={ bg_style }>
             <h1>{ "Paranormle" }</h1>
             <Guesser />
             <Mist />

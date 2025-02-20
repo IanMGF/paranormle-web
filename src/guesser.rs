@@ -1,4 +1,4 @@
-use crate::{episode::Episode, theme};
+use crate::{episode::Episode, theme::Theme};
 use chrono::Datelike;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
@@ -9,58 +9,49 @@ pub struct GuessProp {
     correct: Episode,
 }
 
+fn ord_to_css_class(ord: std::cmp::Ordering) -> &'static str {
+    match ord {
+        std::cmp::Ordering::Equal => "correct",
+        std::cmp::Ordering::Less => "less",
+        std::cmp::Ordering::Greater => "greater",
+    }
+}
+
+fn eq_to_css_class(eq: bool) -> &'static str {
+    match eq {
+        true => "correct",
+        false => "incorrect",
+    }
+}
+
 #[function_component(Guess)]
 pub fn guess(guess: &GuessProp) -> Html {
-    let theme = theme::get_day_guess_color();
+    let theme = Theme::gen_day_element();
+    let correct_guess_css = format!(
+        "
+        background-color: {0}ee;
+        -webkit-box-shadow:0px 0px 5px 3px {0}cc;
+        -moz-box-shadow: 0px 0px 5px 3px {0}cc;
+        box-shadow: 0px 0px 5px 3px {0}cc;
+    ",
+        theme.get_guess_color()
+    );
 
     let guess_css = match guess.episode == guess.correct {
-        true => format!(
-            "
-            background-color: {0}ee;
-            -webkit-box-shadow:0px 0px 5px 3px {0}cc;
-            -moz-box-shadow: 0px 0px 5px 3px {0}cc;
-            box-shadow: 0px 0px 5px 3px {0}cc;
-        ",
-            theme
-        ),
+        true => correct_guess_css,
         false => String::from("background-color: #17171777;"),
     };
 
-    let ep_number_cls = match Ord::cmp(&guess.episode.number, &guess.correct.number) {
-        std::cmp::Ordering::Equal => "correct",
-        std::cmp::Ordering::Less => "less",
-        std::cmp::Ordering::Greater => "greater",
-    };
-
-    let campaign_cls = match guess.episode.campaign == guess.correct.campaign {
-        true => "correct",
-        false => "incorrect",
-    };
-
-    let date_cls = match Ord::cmp(&guess.episode.date.year(), &guess.correct.date.year()) {
-        std::cmp::Ordering::Equal => "correct",
-        std::cmp::Ordering::Less => "less",
-        std::cmp::Ordering::Greater => "greater",
-    };
-
-    let dur_cls = match Ord::cmp(&guess.episode.duration, &guess.correct.duration) {
-        std::cmp::Ordering::Equal => "correct",
-        std::cmp::Ordering::Less => "less",
-        std::cmp::Ordering::Greater => "greater",
-    };
-
-    let player_count_cls = match Ord::cmp(&guess.episode.players, &guess.correct.players) {
-        std::cmp::Ordering::Equal => "correct",
-        std::cmp::Ordering::Less => "less",
-        std::cmp::Ordering::Greater => "greater",
-    };
-
-    let cinematic_cls = match guess.episode.has_cinematic == guess.correct.has_cinematic {
-        true => "correct",
-        false => "incorrect",
-    };
+    let ep_number_cls = ord_to_css_class(Ord::cmp(&guess.episode.number, &guess.correct.number));
+    let campaign_cls = eq_to_css_class(guess.episode.campaign == guess.correct.campaign);
+    let date_cls = ord_to_css_class(Ord::cmp(&guess.episode.date, &guess.correct.date));
+    let dur_cls = ord_to_css_class(Ord::cmp(&guess.episode.duration, &guess.correct.duration));
+    let player_count_cls =
+        ord_to_css_class(Ord::cmp(&guess.episode.players, &guess.correct.players));
+    let cinematic_cls = eq_to_css_class(guess.episode.has_cinematic == guess.correct.has_cinematic);
 
     let thumb_url = format!("res/{}", guess.episode.cover_path);
+
     let title = guess.episode.title.as_str();
     let ep_number = guess.episode.number.to_string();
     let campaign = guess.episode.campaign.as_str();
@@ -68,12 +59,11 @@ pub fn guess(guess: &GuessProp) -> Html {
     let date = guess.episode.date.year().to_string();
     let player_count = guess.episode.players - 1;
     let has_cinematic = match guess.episode.has_cinematic {
-        true => "Tem Cinematic(s)",
-        false => "Não tem Cinematic(s)",
+        true => "Sim",
+        false => "Não",
     };
 
     let fade_in = |dur: f64| format!("animation-delay: {}s;", dur);
-
     let animation_delay = 3.13 / 6.0;
 
     html! {
@@ -116,7 +106,7 @@ pub fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
 
-    let today_idx = (413 * 413) % episodes.len();
+    let today_idx = ((413u64.wrapping_pow(413u32)) % (episodes.len() as u64)) as usize;
     let today_ep = &episodes[today_idx].clone();
 
     let on_key_up = Callback::from({

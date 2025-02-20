@@ -1,5 +1,6 @@
 use chrono::Datelike;
 
+#[derive(Clone, Copy, Debug)]
 pub enum Element {
     Blood,
     Death,
@@ -8,22 +9,43 @@ pub enum Element {
     Fear,
 }
 
-pub fn get_day_bg() -> String {
-    let now = chrono::Local::now();
-    let day = now.day() as usize;
+pub struct Theme(Element);
 
-    const ELEMENTS: [&str; 5] = ["Sangue", "Morte", "Conhecimento", "Energia", "Medo"];
+impl Theme {
+    pub fn gen_day_element() -> Self {
+        let now = chrono::Local::now();
+        let day = now.day() as usize;
 
-    let element_idx = day % ELEMENTS.len();
-    format!("{}.jpeg", ELEMENTS[element_idx])
-}
+        const ELEMENTS: [Element; 5] = [
+            Element::Blood,
+            Element::Death,
+            Element::Knowledge,
+            Element::Energy,
+            Element::Fear,
+        ];
 
-pub fn get_day_guess_color() -> String {
-    let now = chrono::Local::now();
-    let day = now.day() as usize;
+        let element_idx = day % ELEMENTS.len();
+        let element = ELEMENTS[element_idx];
+        Theme(element)
+    }
 
-    const COLORS: [&str; 5] = ["#9c091d", "#000000", "#bdb55b", "#b43cba", "#bdbdbd"];
+    pub fn get_bg(&self) -> String {
+        match self.0 {
+            Element::Blood => String::from("Sangue.jpeg"),
+            Element::Death => String::from("Morte.jpeg"),
+            Element::Knowledge => String::from("Conhecimento.jpeg"),
+            Element::Energy => String::from("Energia.jpeg"),
+            Element::Fear => String::from("Medo.jpeg"),
+        }
+    }
 
-    let color_idx = day % COLORS.len();
-    String::from(COLORS[color_idx])
+    pub fn get_guess_color(&self) -> String {
+        match self.0 {
+            Element::Blood => String::from("#9c091d"),
+            Element::Death => String::from("#000000"),
+            Element::Knowledge => String::from("#bdb55b"),
+            Element::Energy => String::from("#b43cba"),
+            Element::Fear => String::from("#bdbdbd"),
+        }
+    }
 }
