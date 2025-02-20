@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: AdobeHebrew;
-    src: url("adobehebrew-regular.otf") format("opentype");
+    src: url("ui/adobehebrew-regular.otf") format("opentype");
 }
 
 #episode-guess {
@@ -129,12 +129,12 @@ body {
 .guess > .partial { background-color: orange; }
 
 .guess > .less {
-    background-image: url("upward.png");
+    background-image: url("ui/upward.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 .guess > .greater { 
-    background-image: url("downward.png");
+    background-image: url("ui/downward.png");
     background-repeat: no-repeat;
     background-position: center;
 }
