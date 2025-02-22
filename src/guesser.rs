@@ -44,7 +44,7 @@ pub fn guess(guess: &GuessProp) -> Html {
 
     let ep_number_cls = ord_to_css_class(Ord::cmp(&guess.episode.number, &guess.correct.number));
     let campaign_cls = eq_to_css_class(guess.episode.campaign == guess.correct.campaign);
-    let date_cls = ord_to_css_class(Ord::cmp(&guess.episode.date, &guess.correct.date));
+    let date_cls = ord_to_css_class(Ord::cmp(&guess.episode.date.year(), &guess.correct.date.year()));
     let dur_cls = ord_to_css_class(Ord::cmp(&guess.episode.duration, &guess.correct.duration));
     let player_count_cls =
         ord_to_css_class(Ord::cmp(&guess.episode.players, &guess.correct.players));
