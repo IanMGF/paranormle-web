@@ -106,7 +106,15 @@ pub fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
 
-    let today_idx = ((413u64.wrapping_pow(413u32)) % (episodes.len() as u64)) as usize;
+    // let today_idx = ((413u64.wrapping_pow(413u32)) % (episodes.len() as u64)) as usize;
+    // Generate random index seeded off the day using web_sys Crypto
+    let today_idx = {
+        let crypto = web_sys::window().unwrap().crypto().unwrap();
+        let mut buf = [0u8; 4];
+        crypto.get_random_values_with_u8_array(&mut buf).unwrap();
+        let seed = buf[0] as usize;
+        seed % episodes.len()
+    };
     let today_ep = &episodes[today_idx].clone();
 
     let on_key_up = Callback::from({
