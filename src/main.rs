@@ -1,5 +1,4 @@
 use paranormle::guesser::Guesser;
-use paranormle::mist::Mist;
 use paranormle::reset_counter::ResetCountdown;
 use paranormle::theme::Theme;
 use yew::prelude::*;
@@ -14,7 +13,6 @@ fn app() -> Html {
             <h1>{ "Paranormle" }</h1>
             <ResetCountdown />
             <Guesser />
-            <Mist />
 
             <span id="creditos-wpp">
                 <a href="https://x.com/desconjurado/status/1543281129385594881">
