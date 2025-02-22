@@ -1,3 +1,4 @@
+use std::hash::{DefaultHasher, Hash, Hasher};
 use crate::{episode::Episode, theme::Theme};
 use chrono::Datelike;
 use web_sys::HtmlInputElement;
@@ -106,16 +107,11 @@ pub fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
 
-    // let today_idx = {
-    //     let crypto = web_sys::window().unwrap().crypto().unwrap();
-    //     let mut buf = [0u8; 4];
-    //     crypto.get_random_values_with_u8_array(&mut buf).unwrap();
-    //     let seed = buf[0] as usize;
-    //     seed % episodes.len()
-    // };
+    let date = chrono::Local::now().date_naive();
+    let mut hasher = DefaultHasher::new();
+    date.hash(&mut hasher);
     
-    let today_idx = (1234u64).wrapping_pow(413u32) as usize % episodes.len();
-
+    let today_idx = hasher.finish() as usize % episodes.len();
     let today_ep = episodes[today_idx].clone();
 
     let on_key_up = Callback::from({

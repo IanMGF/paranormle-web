@@ -1,5 +1,6 @@
 use paranormle::guesser::Guesser;
 use paranormle::mist::Mist;
+use paranormle::reset_counter::ResetCountdown;
 use paranormle::theme::Theme;
 use yew::prelude::*;
 
@@ -11,6 +12,7 @@ fn app() -> Html {
     html! {
         <div id={ "container" } style={ bg_style }>
             <h1>{ "Paranormle" }</h1>
+            <ResetCountdown />
             <Guesser />
             <Mist />
 

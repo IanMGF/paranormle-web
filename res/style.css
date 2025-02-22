@@ -33,13 +33,29 @@ h1 {
     display: inline-block;
     margin-left: 50vw;
     margin-top: 7vh;
-    margin-bottom: 2vh;
+    margin-bottom: -20px;
     translate: -50%;
     font-size: 96px;
     font-family: AdobeHebrew;
     text-shadow: 0px 8px 10px black;
     color: white;
 }
+
+#reset-countdown {
+    display: inline-block;
+    margin-left: 50vw;
+    translate: -50%;
+    font-size: 22px;
+    font-family: AdobeHebrew;
+    text-align: center;
+    text-shadow: 0px 8px 10px black;
+    color: white;
+}
+
+#reset-countdown > h2, #reset-countdown > h3 {
+    margin: 5px;
+}
+
 body {
     width: 100vw;
     height: 100vh;
