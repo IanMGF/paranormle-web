@@ -36,7 +36,7 @@ pub fn guesser() -> Html {
 
     let today_idx = {
         let mut hasher = DefaultHasher::new();
-        let date = chrono::Local::now().date_naive() - chrono::Duration::days(1);
+        let date = chrono::Local::now().date_naive();
         date.hash(&mut hasher);
         hasher.finish() as usize % episodes.len()
     };
