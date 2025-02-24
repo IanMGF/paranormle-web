@@ -1,4 +1,4 @@
-use chrono::Datelike;
+use chrono::NaiveDate;
 
 #[derive(Clone, Copy, Debug)]
 pub enum Element {
@@ -13,8 +13,10 @@ pub struct Theme(Element);
 
 impl Theme {
     pub fn gen_day_element() -> Self {
-        let now = chrono::Local::now();
-        let day = now.day() as usize;
+        let day_zero: NaiveDate = chrono::NaiveDate::from_ymd_opt(2025, 2, 20).unwrap();
+        let curr_date = chrono::Local::now().date_naive();
+
+        let day_count = curr_date.signed_duration_since(day_zero).num_days() as usize;
 
         const ELEMENTS: [Element; 5] = [
             Element::Blood,
@@ -24,7 +26,7 @@ impl Theme {
             Element::Fear,
         ];
 
-        let element_idx = day % ELEMENTS.len();
+        let element_idx = day_count % ELEMENTS.len();
         let element = ELEMENTS[element_idx];
         Theme(element)
     }
@@ -39,13 +41,25 @@ impl Theme {
         }
     }
 
-    pub fn get_guess_color(&self) -> String {
+    pub const fn get_guess_color(&self) -> &'static str {
         match self.0 {
-            Element::Blood => String::from("#9c091d"),
-            Element::Death => String::from("#000000"),
-            Element::Knowledge => String::from("#bdb55b"),
-            Element::Energy => String::from("#b43cba"),
-            Element::Fear => String::from("#bdbdbd"),
+            Element::Blood => "#9c091d",
+            Element::Death => "#000000",
+            Element::Knowledge => "#bdb55b",
+            Element::Energy => "#b43cba",
+            Element::Fear => "#bdbdbd",
         }
+    }
+
+    pub fn correct_guess_css(&self) -> String {
+        format!(
+            "
+            background-color: {0}ee;
+            -webkit-box-shadow:0px 0px 5px 3px {0}cc;
+            -moz-box-shadow: 0px 0px 5px 3px {0}cc;
+            box-shadow: 0px 0px 5px 3px {0}cc;
+        ",
+            self.get_guess_color()
+        )
     }
 }

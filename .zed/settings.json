@@ -1,0 +1,9 @@
+{
+  "terminal": {
+    "shell": {
+      "program": "nu"
+    },
+    "working_directory": "current_project_directory",
+    "detect_venv": "off"
+  }
+}
