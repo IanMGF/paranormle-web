@@ -34,13 +34,14 @@ pub fn guesser() -> Html {
     let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
     let has_guessed: UseStateHandle<bool> = use_state(|| false);
 
-    let today_idx = {
+    let today_ep = {
         let mut hasher = DefaultHasher::new();
         let date = chrono::Local::now().date_naive();
         date.hash(&mut hasher);
-        hasher.finish() as usize % episodes.len()
+
+        let today_idx = hasher.finish() as usize % episodes.len();
+        &episodes[today_idx]
     };
-    let today_ep = &episodes[today_idx];
 
     let input_callback = guess_callback(
         &episodes,
@@ -60,7 +61,7 @@ pub fn guesser() -> Html {
         .map(|ep| html! { <option value={ ep.title.clone() } /> })
         .collect::<Html>();
 
-    let list = html! {
+    let guesses_list = html! {
         guesses
             .iter()
             .map(|ep| html! {
@@ -88,7 +89,7 @@ pub fn guesser() -> Html {
 
             < Header/ >
             <ul id="guesses">
-                { list }
+                { guesses_list }
             </ul>
         </>
     }
