@@ -41,7 +41,7 @@ impl Theme {
         }
     }
 
-    pub const fn get_guess_color(&self) -> &'static str {
+    const fn get_guess_color(&self) -> &'static str {
         match self.0 {
             Element::Blood => "#9c091d",
             Element::Death => "#000000",
