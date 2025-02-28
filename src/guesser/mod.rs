@@ -90,7 +90,13 @@ pub fn guesser() -> Html {
                 disabled={ *has_guessed }
             />
 
-            < Header/ >
+            {
+                if !guesses.is_empty() {
+                    html! { < Header/ > }
+                } else {
+                    html! { "" }
+                }
+            }
             <ul id="guesses">
                 { guesses_list }
             </ul>
