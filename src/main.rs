@@ -23,7 +23,29 @@ fn app() -> Html {
     }
 }
 
+#[function_component(Head)]
+fn head() -> Html {
+    html! {
+        <>
+            <title>{ "Paranormle" }</title>
+            <meta charset={ "utf-8" } />
+            <meta name={ "description" } content={ "Adivinhe o episódio de Ordem Paranormal!" } />
+            <meta name={ "author" } content={ "Ian M. G. Freitas" } />
+            <meta name={ "viewport" } content={ "width=device-width, initial-scale=1.0" } />
+
+            <link rel="stylesheet" type="text/css" href="res/style.css" />
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin={ "true" } />
+            <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet" />
+        < />
+    }
+}
+
 fn main() {
+    let head = gloo::utils::head();
+
     wasm_logger::init(wasm_logger::Config::default());
+
     yew::Renderer::<App>::new().render();
+    yew::Renderer::<Head>::with_root(head.into()).render();
 }
