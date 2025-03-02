@@ -38,10 +38,10 @@ pub fn guesser() -> Html {
         let mut hasher = DefaultHasher::new();
         let date = chrono::Local::now().date_naive();
         date.hash(&mut hasher);
-        
+
         #[cfg(debug_assertions)]
         "dbg_ver".hash(&mut hasher);
-        
+
         let today_idx = hasher.finish() as usize % episodes.len();
         &episodes[today_idx]
     };
