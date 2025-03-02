@@ -36,7 +36,7 @@ fn head() -> Html {
             <link rel="stylesheet" type="text/css" href="res/style.css" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin={ "true" } />
-            <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet" />
+            <link href={ "https://fonts.googleapis.com/css2?family=Girassol&display=swap" } rel="stylesheet" />
         < />
     }
 }
