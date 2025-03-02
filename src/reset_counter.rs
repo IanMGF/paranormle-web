@@ -1,31 +1,30 @@
 use chrono::{NaiveTime, TimeDelta};
 use gloo_timers::callback::Interval;
-use yew::{function_component, html, use_state, Html};
-
-fn get_formatted_countdown() -> String {
-    let next_day = chrono::Local::now().date_naive() + chrono::Duration::days(1);
-    let now = chrono::Local::now();
-    let until_next_day: TimeDelta = next_day.and_time(NaiveTime::default()) - now.naive_local();
-
-    format!(
-        "{:02}:{:02}:{:02}",
-        until_next_day.num_hours(),
-        until_next_day.num_minutes() % 60,
-        until_next_day.num_seconds() % 60
-    )
-}
+use yew::{function_component, html, Html};
 
 #[function_component(ResetCountdown)]
 pub fn day_countdown() -> Html {
-    let formatted = get_formatted_countdown();
-    let time_state = use_state(|| formatted);
+    let mut until_next_day: TimeDelta = {
+        let now = chrono::Local::now();
+        let next_day = chrono::Local::now().date_naive() + chrono::Duration::days(1);
+        let next_day = next_day.and_time(NaiveTime::default());
 
-    let interval = Interval::new(1000u32, {
-        let time_state = time_state.clone();
-        move || {
-            let formatted = get_formatted_countdown();
-            time_state.set(formatted);
-        }
+        next_day - now.naive_local()
+    };
+
+    let interval = Interval::new(1000u32, move || {
+        until_next_day -= chrono::Duration::seconds(1);
+        let new_time = format!(
+            "{:02}:{:02}:{:02}",
+            until_next_day.num_hours(),
+            until_next_day.num_minutes() % 60,
+            until_next_day.num_seconds() % 60
+        );
+
+        gloo::utils::document()
+            .get_element_by_id("countdown")
+            .expect("Element with id 'countdown' not found")
+            .set_text_content(Some(new_time.as_str()));
     });
 
     // Start the interval
@@ -34,7 +33,14 @@ pub fn day_countdown() -> Html {
     html! {
         <div id="reset-countdown">
             <h2>{ "Tempo para o próximo episódio:" }</h2>
-            <h3>{ (*time_state).clone() }</h3>
+            <h3 id={ "countdown" }>{
+                format!(
+                    "{:02}:{:02}:{:02}",
+                    until_next_day.num_hours(),
+                    until_next_day.num_minutes() % 60,
+                    until_next_day.num_seconds() % 60
+                ).as_str()
+            }</h3>
         </div>
     }
 }
