@@ -1,6 +1,7 @@
 use paranormle::guesser::Guesser;
 use paranormle::reset_counter::ResetCountdown;
 use paranormle::theme::Theme;
+use web_sys::Element;
 use yew::prelude::*;
 
 #[function_component(App)]
@@ -42,10 +43,10 @@ fn head() -> Html {
 }
 
 fn main() {
-    let head = gloo::utils::head();
-
     wasm_logger::init(wasm_logger::Config::default());
 
+    let head: Element = gloo::utils::head().into();
+
     yew::Renderer::<App>::new().render();
-    yew::Renderer::<Head>::with_root(head.into()).render();
+    yew::Renderer::<Head>::with_root(head).render();
 }
