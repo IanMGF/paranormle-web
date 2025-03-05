@@ -5,22 +5,54 @@ mod input;
 use crate::episode::Episode;
 use guess::Guess;
 use input::guess_callback;
+use stylist::style;
 use std::hash::{DefaultHasher, Hash, Hasher};
 use yew::prelude::*;
 
 #[function_component(Header)]
-fn titles() -> Html {
+fn header() -> Html {
+    let header_style = style!("
+        width: max-content;
+        position: relative;
+        translate: -50%;
+        left: 50vw;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        border-radius: 10px;
+    ").expect("Failed to create Guesser Header style");
+    
+    let header_unit_style = style!("
+        font-family: AdobeHebrew;
+        font-weight: bolder;
+        font-size: 18px;
+        width: 175px;
+        height: 75px;
+        margin: 5px 5px 0px 5px;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        color: white;
+        background-size: contain;
+        border-radius: 5px;
+        background-color: #000000cc;
+    ").expect("Failed to create Guesser Header Unit style");
+    
+    let header_unit_class = header_unit_style.get_class_name().to_owned();
+    
     html! {
-        <div class={ "titles-wrapper" }>
-            <div class={ "titles" }>
-                <div class={ "neutral" }>{ "Título" }</div>
-                <div class={ "neutral" }>{ "Nro do Episódio" }</div>
-                <div class={ "neutral" }>{ "Campanha" }</div>
-                <div class={ "neutral" }>{ "Duração" }</div>
-                <div class={ "neutral" }>{ "Ano" }</div>
-                <div class={ "neutral" }>{ "Jogadores" }</div>
-                <div class={ "neutral" }>{ "Tem Cinematic" }</div>
-            </div>
+        <div class={ header_style.get_class_name().to_owned() }>
+            <div class={ &header_unit_class }>{ "Título" }</div>
+            <div class={ &header_unit_class }>{ "Nro do Episódio" }</div>
+            <div class={ &header_unit_class }>{ "Campanha" }</div>
+            <div class={ &header_unit_class }>{ "Duração" }</div>
+            <div class={ &header_unit_class }>{ "Ano" }</div>
+            <div class={ &header_unit_class }>{ "Jogadores" }</div>
+            <div class={ &header_unit_class }>{ "Tem Cinematic" }</div>
         </div>
     }
 }
@@ -86,18 +118,16 @@ pub fn guesser() -> Html {
                 type={ "text" }
                 placeholder={ "Adivinhe o episódio..." }
                 id="episode-guess"
+                class="centered"
                 style="width:895px;"
                 disabled={ *has_guessed }
             />
 
             {
-                if !guesses.is_empty() {
-                    html! { < Header/ > }
-                } else {
-                    html! { "" }
-                }
+                if !guesses.is_empty() { html! { < Header/ > } }
+                else { html! { } }
             }
-            <ul id="guesses">
+            <ul id="guesses" class="centered">
                 { guesses_list }
             </ul>
         </>

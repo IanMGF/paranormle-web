@@ -1,3 +1,11 @@
+.centered {
+    position: relative;
+    display: block;
+    left: 50vw;
+    translate: -50%;
+    width: max-content;
+}
+
 #creditos-wpp {
     bottom: 10px;
     left: 10px;
@@ -20,19 +28,12 @@
 }
 
 #episode-guess {
-    display: block;
-    margin-top: 2vh;
-    margin-left: 50vw;
-    translate: -50%;
     width: 300px;
     height: 30px;
 }
 
 html { height: 100vh; width: 100vw }
 h1 { 
-    display: inline-block;
-    margin-left: 50vw;
-    margin-top: 7vh;
     margin-bottom: -20px;
     translate: -50%;
     font-size: 96px;
@@ -42,9 +43,6 @@ h1 {
 }
 
 #reset-countdown {
-    display: inline-block;
-    margin-left: 50vw;
-    translate: -50%;
     font-size: 22px;
     font-family: AdobeHebrew;
     text-align: center;
@@ -59,16 +57,6 @@ h1 {
 body {
     width: 100vw;
     height: 100vh;
-    margin: 0 0 0 0;
-}
-
-#container {
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 100%;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
     margin: 0 0 0 0;
 }
 
@@ -158,40 +146,6 @@ body {
 #guesses {
     padding: 0 0 0 0;
     margin: 0px 0px
-}
-
-.titles {
-    width: max-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    border-radius: 10px;
-}
-
-.titles-wrapper { 
-    display: flex;
-    justify-content: center;
-    margin-block: 5px;
-    margin: 10px 0 0 0;
-}
-
-.titles > div {
-    font-family: AdobeHebrew;
-    font-weight: bolder;
-    font-size: 18px;
-    width: 175px;
-    height: 75px;
-    margin: 5px 5px 0px 5px;  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    color: white;
-    background-size: contain;
-    border-radius: 5px;
-    background-color: #000000cc;
 }
 
 @keyframes fadeIn {

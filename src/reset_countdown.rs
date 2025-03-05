@@ -31,7 +31,7 @@ pub fn day_countdown() -> Html {
     interval.forget();
 
     html! {
-        <div id="reset-countdown">
+        <div id="reset-countdown" class="centered">
             <h2>{ "Tempo para o próximo episódio:" }</h2>
             <h3 id={ "countdown" }>{
                 format!(
@@ -39,7 +39,7 @@ pub fn day_countdown() -> Html {
                     until_next_day.num_hours(),
                     until_next_day.num_minutes() % 60,
                     until_next_day.num_seconds() % 60
-                ).as_str()
+                )
             }</h3>
         </div>
     }

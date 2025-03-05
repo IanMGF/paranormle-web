@@ -1,17 +1,28 @@
 use paranormle::guesser::Guesser;
-use paranormle::reset_counter::ResetCountdown;
+use paranormle::reset_countdown::ResetCountdown;
 use paranormle::theme::Theme;
+use stylist::{style, Style};
 use web_sys::Element;
 use yew::prelude::*;
 
 #[function_component(App)]
 fn app() -> Html {
     let bg_img = Theme::gen_day_element().get_bg();
-    let bg_style = format!("background-image: url(\'res/backgrounds/{}\');", bg_img);
 
+    let body_style: Style = style!("
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 100%;
+        background-image: url(\"res/backgrounds/${bg_img}\");
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0 0 0 0;
+    ", bg_img=bg_img).expect("Failed to create container class");
+    
     html! {
-        <div id={ "container" } style={ bg_style }>
-            <h1>{ "Paranormle" }</h1>
+        <div class={ body_style.get_class_name().to_owned() }>
+            <h1 class="centered">{ "Paranormle" }</h1>
             <ResetCountdown />
             <Guesser />
 
