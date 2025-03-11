@@ -30,14 +30,14 @@ impl Theme {
         let element = ELEMENTS[element_idx];
         Theme(element)
     }
-
-    pub fn get_bg(&self) -> String {
+    
+    pub fn get_bg(&self) -> &str {
         match self.0 {
-            Element::Blood => String::from("Sangue.jpeg"),
-            Element::Death => String::from("Morte.jpeg"),
-            Element::Knowledge => String::from("Conhecimento.jpeg"),
-            Element::Energy => String::from("Energia.jpeg"),
-            Element::Fear => String::from("Medo.jpeg"),
+            Element::Blood => "Sangue.jpeg",
+            Element::Death => "Morte.jpeg",
+            Element::Knowledge => "Conhecimento.jpeg",
+            Element::Energy => "Energia.jpeg",
+            Element::Fear => "Medo.jpeg",
         }
     }
 
@@ -52,14 +52,18 @@ impl Theme {
     }
 
     pub fn correct_guess_css(&self) -> String {
+        let solid_color = self.get_guess_color();
+        let bg_color = format!("{}ee;", solid_color);
+        let shadow_color = format!("{}cc;", solid_color);
+        
         format!(
             "
-            background-color: {0}ee;
-            -webkit-box-shadow:0px 0px 5px 3px {0}cc;
-            -moz-box-shadow: 0px 0px 5px 3px {0}cc;
-            box-shadow: 0px 0px 5px 3px {0}cc;
+            background-color: {0};
+            -webkit-box-shadow:0px 0px 5px 3px {1};
+            -moz-box-shadow: 0px 0px 5px 3px {1};
+            box-shadow: 0px 0px 5px 3px {1};
         ",
-            self.get_guess_color()
+            bg_color, shadow_color
         )
     }
 }
