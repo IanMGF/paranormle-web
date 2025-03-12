@@ -16,7 +16,8 @@ fn app() -> Html {
         background-image: url(\"res/backgrounds/${bg_img}\");
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
         margin: 0 0 0 0;
     ", bg_img=bg_img).expect("Failed to create container class");
     
