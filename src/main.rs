@@ -36,7 +36,7 @@ fn body() -> Html {
         width: 100vw;
         height: 100vh;
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
         margin: 0 0 0 0;
     ", bg_img=bg).expect("Failed to create container class");
     
