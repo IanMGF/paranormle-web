@@ -1,5 +1,5 @@
 use chrono::Datelike;
-use std::cmp::Ordering;
+use std::{cmp::Ordering, rc::Rc};
 use yew::{function_component, html, Html, Properties};
 
 use crate::{episode::Episode, theme::Theme};
@@ -9,13 +9,13 @@ use super::info_piece::InfoPiece;
 #[derive(Properties, Clone, PartialEq, Eq)]
 pub struct GuessProp {
     pub episode: Episode,
-    pub correct: Episode,
+    pub correct: Rc<Episode>,
 }
 
 #[function_component(Guess)]
 pub fn guess(guess: &GuessProp) -> Html {
     let theme = Theme::gen_day_element();
-    let guess_css = match guess.episode == guess.correct {
+    let guess_css = match guess.episode == *guess.correct {
         true => theme.correct_guess_css(),
         false => String::from("background-color: #17171777;"),
     };

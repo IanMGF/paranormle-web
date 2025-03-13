@@ -27,11 +27,6 @@
     src: url("ui/adobehebrew-regular.otf") format("opentype");
 }
 
-#episode-guess {
-    width: 300px;
-    height: 30px;
-}
-
 html { height: 100vh; width: 100vw }
 h1 { 
     margin-bottom: -20px;
@@ -58,13 +53,6 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0 0 0 0;
-}
-
-.guess-wrapper { 
-    display: flex;
-    justify-content: center;
-    margin-block: 5px;
-    margin: 0px 0px;
 }
 
 .guess {

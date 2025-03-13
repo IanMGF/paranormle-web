@@ -1,5 +1,8 @@
+use std::rc::Rc;
+
+use stylist::style;
 use web_sys::HtmlInputElement;
-use yew::{Callback, InputEvent, KeyboardEvent, TargetCast, UseStateHandle};
+use yew::{function_component, html, Callback, Html, InputEvent, KeyboardEvent, Properties, TargetCast, UseStateHandle};
 
 use crate::episode::Episode;
 
@@ -27,7 +30,7 @@ impl GuessEvent for InputEvent {
 #[allow(private_bounds)]
 pub fn guess_callback<T: GuessEvent>(
     episodes: &[Episode],
-    correct_ep: Episode,
+    correct_ep: Rc<Episode>,
     guesses_state: UseStateHandle<Vec<Episode>>,
     has_guessed: UseStateHandle<bool>,
 ) -> Callback<T> {
@@ -57,4 +60,55 @@ pub fn guess_callback<T: GuessEvent>(
             }
         }
     })
+}
+
+#[derive(Properties, Clone, PartialEq)]
+pub struct InputProps {
+    pub episode_list: Rc<Vec<Episode>>,
+    pub episode_of_the_day: Rc<Episode>,
+    pub guesses: UseStateHandle<Vec<Episode>>,
+    pub has_guessed: UseStateHandle<bool>,
+}
+
+#[function_component(Input)]
+pub fn input(props: &InputProps) -> Html {
+    let input_style = style!("
+        width: 895px;
+        height: 30px;
+    ").expect("Failed to create Guesser input style");
+    
+    let input_callback = guess_callback(
+        &props.episode_list,
+        props.episode_of_the_day.clone(),
+        props.guesses.clone(),
+        props.has_guessed.clone(),
+    );
+    let event_callback = guess_callback(
+        &props.episode_list,
+        props.episode_of_the_day.clone(),
+        props.guesses.clone(),
+        props.has_guessed.clone(),
+    );
+    
+    let options = props.episode_list
+            .iter()
+            .filter(|ep| !props.guesses.contains(ep))
+            .map(|ep| html! { <option value={ ep.title.clone() } /> })
+            .collect::<Html>();
+    
+    html! {
+        <>
+            < datalist id="episodes" > { options } </datalist>
+            <input
+                onkeyup={ input_callback }
+                oninput={ event_callback }
+                list={ "episodes" }
+                type={ "text" }
+                placeholder={ "Adivinhe o episódio..." }
+                id="episode-guess"
+                class={ input_style.get_class_name().to_owned() + " centered" }
+                disabled={ *props.has_guessed }
+            />
+        </>
+    }
 }

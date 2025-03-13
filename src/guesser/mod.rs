@@ -4,9 +4,9 @@ mod input;
 
 use crate::episode::Episode;
 use guess::Guess;
-use input::guess_callback;
+use input::Input;
 use stylist::style;
-use std::hash::{DefaultHasher, Hash, Hasher};
+use std::{hash::{DefaultHasher, Hash, Hasher}, rc::Rc};
 use yew::prelude::*;
 
 #[function_component(Header)]
@@ -57,16 +57,12 @@ fn header() -> Html {
     }
 }
 
+const EPISODES: &str = include_str!("../../res/data/episodes.json");
+
 #[function_component(Guesser)]
 pub fn guesser() -> Html {
-    const EPISODES: &str = include_str!("../../res/data/episodes.json");
-
-    let episodes: Vec<Episode> = serde_json::from_str(EPISODES).unwrap();
-
-    let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
-    let has_guessed: UseStateHandle<bool> = use_state(|| false);
-
-    let today_ep = {
+    let episodes: Rc<Vec<Episode>> = use_memo((), |_| serde_json::from_str(EPISODES).unwrap());
+    let today_ep: Rc<Episode> = use_memo((), |_| {
         let mut hasher = DefaultHasher::new();
         let date = chrono::Local::now().date_naive();
         date.hash(&mut hasher);
@@ -74,33 +70,18 @@ pub fn guesser() -> Html {
         #[cfg(debug_assertions)]
         "dbg_ver".hash(&mut hasher);
 
-        let today_idx = hasher.finish() as usize % episodes.len();
-        &episodes[today_idx]
-    };
+        let today_idx = hasher.finish() as usize % (*episodes).len();
+        (*episodes)[today_idx].clone()
+    });
 
-    let input_callback = guess_callback(
-        &episodes,
-        today_ep.clone(),
-        guesses.clone(),
-        has_guessed.clone(),
-    );
-    let event_callback = guess_callback(
-        &episodes,
-        today_ep.clone(),
-        guesses.clone(),
-        has_guessed.clone(),
-    );
-
-    let options = episodes
-        .iter()
-        .map(|ep| html! { <option value={ ep.title.clone() } /> })
-        .collect::<Html>();
+    let guesses: UseStateHandle<Vec<Episode>> = use_state(Vec::new);
+    let has_guessed: UseStateHandle<bool> = use_state(|| false);
 
     let guesses_list = html! {
         guesses
             .iter()
             .map(|ep| html! {
-                <li class="guess-wrapper">
+                <li>
                 <Guess episode={ ep.clone() } correct={ today_ep.clone() } />
                 </li>
             })
@@ -110,22 +91,16 @@ pub fn guesser() -> Html {
 
     html! {
         <>
-            < datalist id="episodes" > { options } </datalist>
-            <input
-                onkeyup={input_callback.clone()}
-                oninput={event_callback.clone()}
-                list={ "episodes" }
-                type={ "text" }
-                placeholder={ "Adivinhe o episódio..." }
-                id="episode-guess"
-                class="centered"
-                style="width:895px;"
-                disabled={ *has_guessed }
+            <Input 
+                episode_list={ episodes.clone() }
+                episode_of_the_day={ today_ep.clone() }
+                guesses={ guesses.clone() }
+                has_guessed={ has_guessed.clone() }
             />
 
             {
-                if !guesses.is_empty() { html! { < Header/ > } }
-                else { html! { } }
+                if guesses.is_empty() { html! { } }
+                else { html! { < Header/ > } }
             }
             <ul id="guesses" class="centered">
                 { guesses_list }
