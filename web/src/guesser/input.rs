@@ -99,12 +99,7 @@ pub fn input(props: &InputProps) -> Html {
     let options: Vec<&Episode> = props
         .episode_list
         .iter()
-        .filter(
-            |&ep| props.guesses
-                .iter()
-                .cloned()
-                .all(|guess| *guess != *ep)
-        )
+        .filter(|&ep| props.guesses.iter().cloned().all(|guess| *guess != *ep))
         .collect::<Vec<&Episode>>();
 
     let options_html = options

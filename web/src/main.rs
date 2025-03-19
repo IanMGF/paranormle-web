@@ -28,7 +28,8 @@ fn body() -> Html {
     let element = Theme::gen_day_element();
     let bg = element.get_bg();
 
-    let body_style: Style = style!("
+    let body_style: Style = style!(
+        "
         background-attachment: fixed;
         background-position: center;
         background-size: 100%;
@@ -38,8 +39,11 @@ fn body() -> Html {
         overflow-x: hidden;
         overflow-y: scroll;
         margin: 0 0 0 0;
-    ", bg_img=bg).expect("Failed to create container class");
-    
+    ",
+        bg_img = bg
+    )
+    .expect("Failed to create container class");
+
     html! {
         <div class={ body_style.get_class_name().to_owned() }>
             <h1 class="centered">{ "Paranormle" }</h1>
@@ -54,7 +58,6 @@ fn body() -> Html {
         </div>
     }
 }
-
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());

@@ -30,7 +30,7 @@ impl Theme {
         let element = ELEMENTS[element_idx];
         Theme(element)
     }
-    
+
     pub fn get_bg(&self) -> &str {
         match self.0 {
             Element::Blood => "Sangue.jpeg",
@@ -55,7 +55,7 @@ impl Theme {
         let solid_color = self.get_guess_color();
         let bg_color = format!("{}ee;", solid_color);
         let shadow_color = format!("{}cc;", solid_color);
-        
+
         format!(
             "
             background-color: {0};
