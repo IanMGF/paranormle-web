@@ -1,17 +1,7 @@
-[package]
-name = "paranormle"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-chrono = "0.4.39"
-gloo = { version = "0.11.0", features = ["utils"] }
-gloo-timers = "0.3.0"
-log = "0.4.25"
-serde = { version = "1.0.217", features = ["derive"] }
-serde_json = "1.0.138"
-stylist = "0.13.0"
-wasm-bindgen = "0.2.100"
-wasm-logger = "0.2.0"
-web-sys = { version = "0.3.77", features = ["Crypto"] }
-yew = { version = "0.21.0", features = ["csr"] }
+[workspace]
+members = [
+    "api",
+    "common",
+    "web",
+]
+resolver = "2" 

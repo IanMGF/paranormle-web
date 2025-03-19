@@ -27,7 +27,9 @@ jobs:
           cargo install --locked trunk
 
       - name: ⚙️ Build Yew App
-        run: trunk build --release --public-url /paranormle-web/ --dist dist
+        run: |
+          cd web/
+          trunk build --release --public-url /paranormle-web/ --dist dist
 
       - name: 📤 Upload Artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3

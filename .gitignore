@@ -1,4 +1,14 @@
+.cargo/
+
 /target
-/scrapper
-/dist
-/.trunk
+/web/target/
+/api/target/
+/common/target/
+
+/api/.shuttle
+
+/web/scrapper
+/web/dist
+/web/.trunk
+.shuttle*
+Secrets*.toml
