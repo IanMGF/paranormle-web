@@ -26,6 +26,17 @@ jobs:
           rustup target add wasm32-unknown-unknown
           cargo install --locked trunk
 
+      - name: 🔧 Create Cargo configuration file
+        uses: 1arp/create-a-file-action@0.4.5
+        with:
+          path: '.cargo'
+          isAbsolutePath: false
+          file: 'config.toml'
+          content: |
+            DEV_API_URL = ${{ secrets.DEV_API_URL }}
+            PROD_API_URL = ${{ secrets.PROD_API_URL }}
+            DB_URL = ${{ secrets.DB_URL }}
+
       - name: ⚙️ Build Yew App
         run: |
           cd web/
