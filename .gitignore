@@ -1,4 +1,5 @@
 .cargo/
+.ignore
 
 /target
 /web/target/
