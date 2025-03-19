@@ -1,5 +1,4 @@
 [deploy]
 include = [
-  "Secrets.toml",
   ".cargo/config.toml",
 ]

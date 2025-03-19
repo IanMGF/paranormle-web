@@ -30,8 +30,6 @@ jobs:
         run: |
           cd web/
           trunk build --release --public-url /paranormle-web/ --dist dist
-        env:
-          API_URL: ${{ secrets.ApiUrl }}
 
       - name: 📤 Upload Artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
