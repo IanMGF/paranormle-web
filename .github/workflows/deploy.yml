@@ -33,9 +33,9 @@ jobs:
           isAbsolutePath: false
           file: 'config.toml'
           content: |
-            DEV_API_URL = ${{ secrets.DEV_API_URL }}
-            PROD_API_URL = ${{ secrets.PROD_API_URL }}
-            DB_URL = ${{ secrets.DB_URL }}
+            DEV_API_URL = "${{ secrets.DEV_API_URL }}"
+            PROD_API_URL = "${{ secrets.PROD_API_URL }}"
+            DB_URL = "${{ secrets.DB_URL }}"
 
       - name: ⚙️ Build Yew App
         run: |
