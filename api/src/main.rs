@@ -40,16 +40,11 @@ async fn day_episode() -> String {
 }
 
 #[shuttle_runtime::main]
-async fn main(
-    #[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore,
-) -> shuttle_axum::ShuttleAxum {
-    std::env::set_var("API_URL", secrets.get("API_URL").unwrap());
-    std::env::set_var("DB_URL", secrets.get("DB_URL").unwrap());
-
+async fn main() -> shuttle_axum::ShuttleAxum {
     let cors_origin = if cfg!(debug_assertions) {
         "http://127.0.0.1:8080"
     } else {
-        "https://ianmgf.github.io/paranormle-web/"
+        "https://ianmgf.github.io"
     };
 
     let cors = CorsLayer::new()
