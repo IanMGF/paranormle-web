@@ -785,6 +785,7 @@ name = "common"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "lazy_static",
  "serde",
  "serde_json",
 ]
@@ -2925,8 +2926,6 @@ dependencies = [
  "gloo-net 0.6.0",
  "gloo-timers 0.3.0",
  "log",
- "serde",
- "serde_json",
  "stylist",
  "wasm-bindgen",
  "wasm-bindgen-futures",

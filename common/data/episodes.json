@@ -874,5 +874,41 @@
         "duration": 7140,
         "players": 6,
         "has_cinematic": false
+    },
+    {
+        "wiki_url": "https://ordemparanormal.fandom.com/wiki/Natal_Macabro_-_Epis%C3%B3dio_1",
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/9/9e/Natal_Macabro_Parte_1.png/revision/latest?cb=20241221190559&path-prefix=pt-br",
+        "cover_path": "covers/Natal Macabro1.png",
+        "title": "Natal Macabro - Parte 1",
+        "campaign": "Natal Macabro",
+        "date": "21/12/2024",
+        "number": 1,
+        "duration": 20412,
+        "players": 7,
+        "has_cinematic": true
+    },
+    {
+        "wiki_url": "https://ordemparanormal.fandom.com/wiki/Natal_Macabro_-_Epis%C3%B3dio_2",
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/6/6b/Natal_Macabro_Parte_2.png/revision/latest?cb=20241226161515&path-prefix=pt-br",
+        "cover_path": "covers/Natal Macabro2.png",
+        "title": "Natal Macabro - Parte 2",
+        "campaign": "Natal Macabro",
+        "date": "26/12/2024",
+        "number": 2,
+        "duration": 17523,
+        "players": 7,
+        "has_cinematic": true
+    },
+    {
+        "wiki_url": "https://ordemparanormal.fandom.com/wiki/Natal_Macabro_-_Epis%C3%B3dio_3",
+        "cover_url": "https://static.wikia.nocookie.net/ordemparanormal/images/c/c8/Natal_Macabro_Parte_3.png/revision/latest?cb=20241229175335&path-prefix=pt-br",
+        "cover_path": "covers/Natal Macabro3.png",
+        "title": "Natal Macabro - Parte Final",
+        "campaign": "Natal Macabro",
+        "date": "30/12/2024",
+        "number": 3,
+        "duration": 15924,
+        "players": 7,
+        "has_cinematic": true
     }
 ]
