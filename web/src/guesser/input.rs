@@ -7,7 +7,7 @@ use yew::{
     UseStateHandle,
 };
 
-use common::episode::Episode;
+use common::{episode::Episode, EPISODES_LIST};
 
 trait GuessEvent {
     fn get_guess(&self) -> Option<String>;
@@ -32,13 +32,12 @@ impl GuessEvent for InputEvent {
 
 #[allow(private_bounds)]
 pub fn guess_callback<T: GuessEvent>(
-    episodes: &[Episode],
     correct_ep: Rc<Episode>,
     guesses_state: UseStateHandle<Vec<Rc<Episode>>>,
     has_guessed: UseStateHandle<bool>,
 ) -> Callback<T> {
     Callback::from({
-        let episodes = Vec::from(episodes);
+        let episodes = (*EPISODES_LIST).clone();
         let guesses = guesses_state.clone();
         let correct = correct_ep.clone();
 
@@ -67,7 +66,6 @@ pub fn guess_callback<T: GuessEvent>(
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct InputProps {
-    pub episode_list: Rc<Vec<Episode>>,
     pub episode_of_the_day: Rc<Episode>,
     pub guesses: UseStateHandle<Vec<Rc<Episode>>>,
     pub has_guessed: UseStateHandle<bool>,
@@ -84,26 +82,19 @@ pub fn input(props: &InputProps) -> Html {
     .expect("Failed to create Guesser input style");
 
     let input_callback = guess_callback(
-        &props.episode_list,
         props.episode_of_the_day.clone(),
         props.guesses.clone(),
         props.has_guessed.clone(),
     );
     let event_callback = guess_callback(
-        &props.episode_list,
         props.episode_of_the_day.clone(),
         props.guesses.clone(),
         props.has_guessed.clone(),
     );
 
-    let options: Vec<&Episode> = props
-        .episode_list
+    let options_html = (*EPISODES_LIST)
         .iter()
-        .filter(|&ep| props.guesses.iter().cloned().all(|guess| *guess != *ep))
-        .collect::<Vec<&Episode>>();
-
-    let options_html = options
-        .iter()
+        .filter(|ep| props.guesses.iter().cloned().all(|guess| *guess != **ep))
         .map(|ep| html! { <option value={ ep.title.clone() }></option> })
         .collect::<Html>();
     html! {

@@ -2,10 +2,10 @@ mod guess;
 mod info_piece;
 mod input;
 
-use common::{episode::Episode, EPISODES_JSON};
+use common::{episode::Episode, EPISODES_LIST};
 use guess::Guess;
 use input::Input;
-use std::rc::Rc;
+use std::{rc::Rc, sync::Arc};
 use stylist::style;
 use yew::prelude::*;
 
@@ -67,7 +67,7 @@ fn header() -> Html {
 
 #[function_component(Guesser)]
 pub fn guesser() -> Html {
-    let episodes: Rc<Vec<Episode>> = use_memo((), |_| serde_json::from_str(EPISODES_JSON).unwrap());
+    let episodes: Arc<Vec<Episode>> = (*EPISODES_LIST).clone();
     let episode: UseStateHandle<Option<Rc<Episode>>> = use_state(|| None);
 
     let guesses: UseStateHandle<Vec<Rc<Episode>>> = use_state(Vec::new);
@@ -108,7 +108,6 @@ pub fn guesser() -> Html {
     html! {
         <>
             <Input
-                episode_list={ episodes.clone() }
                 episode_of_the_day={ today_ep.clone() }
                 guesses={ guesses.clone() }
                 has_guessed={ has_guessed.clone() }
