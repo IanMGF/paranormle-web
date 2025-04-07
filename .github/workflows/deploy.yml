@@ -31,8 +31,7 @@ jobs:
           cd web/
           trunk build --release --public-url /paranormle-web/ --dist dist
         env:
-          DEV_API_URL: ${{ secrets.DEV_API_URL }}  
-          PROD_API_URL: ${{ secrets.PROD_API_URL }}
+          API_URL: ${{ secrets.API_URL }}  
           DB_URL: ${{ secrets.DB_URL }}
 
       - name: 📤 Upload Artifact to GitHub Pages

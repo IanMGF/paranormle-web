@@ -3,10 +3,7 @@ use std::rc::Rc;
 use gloo_net::http::Request;
 
 pub async fn get_day_episode() -> Result<usize, Rc<gloo_net::Error>> {
-    #[cfg(debug_assertions)]
-    let url = (env!("DEV_API_URL")).to_string() + "/episode";
-    #[cfg(not(debug_assertions))]
-    let url = (env!("PROD_API_URL")).to_string() + "/episode";
+    let url = (env!("API_URL")).to_string() + "/episode";
 
     let req_res = Request::get(url.as_str()).send().await;
 
