@@ -68,8 +68,8 @@ async fn day_episode() -> String {
 }
 
 #[shuttle_runtime::main]
-async fn main() -> shuttle_axum::ShuttleAxum {
-    let cors_origin = env!("CORS_ORIGIN");
+async fn main(#[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore) -> shuttle_axum::ShuttleAxum {
+    let cors_origin = secrets.get("CORS_ORIGIN").unwrap();
 
     let cors = CorsLayer::new()
         .allow_methods([Method::GET, Method::POST])
