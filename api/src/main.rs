@@ -1,4 +1,4 @@
-use api::episode_history;
+use api::episode_history::{EpisodeHistory, HistoryEntry};
 use axum::{
     http::{HeaderValue, Method},
     routing::get,
@@ -13,7 +13,7 @@ use tower_http::cors::{Any, CorsLayer};
 use std::collections::HashSet;
 
 pub async fn get_day_episode(episodes: &[Episode]) -> usize {
-    let invalid_eps = episode_history::get_episode_idx_history().await.unwrap();
+    let mut ep_history_container = EpisodeHistory::new().unwrap();
 
     let invalid_eps: HashSet<HistoryEntry> = {
         let before = Instant::now();
