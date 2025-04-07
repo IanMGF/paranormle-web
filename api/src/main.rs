@@ -36,9 +36,14 @@ pub async fn get_day_episode(episodes: &[Episode]) -> usize {
     }
 
     let invalid_eps: Vec<usize> = {
-        let invalid_idxs = invalid_eps.iter().map(|entry| entry.episode_idx).collect::<HashSet<usize>>();
+        let invalid_idxs = invalid_eps
+            .iter()
+            .map(|entry| entry.episode_idx)
+            .collect::<HashSet<usize>>();
         let set = (0..episodes.len()).collect::<HashSet<usize>>();
-        set.difference(&invalid_idxs).cloned().collect::<Vec<usize>>()
+        set.difference(&invalid_idxs)
+            .cloned()
+            .collect::<Vec<usize>>()
     };
     
     let mapped_idx = rand::rng().random_range(0..invalid_eps.len());
