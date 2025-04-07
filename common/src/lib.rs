@@ -17,5 +17,6 @@ pub fn get_day_offset() -> usize {
 }
 
 lazy_static! {
-    pub static ref EPISODES_LIST: Arc<Vec<Episode>> = Arc::new(serde_json::from_str(EPISODES_JSON).unwrap());
+    pub static ref EPISODES_LIST: Arc<Vec<Episode>> =
+        Arc::new(serde_json::from_str(EPISODES_JSON).unwrap());
 }
