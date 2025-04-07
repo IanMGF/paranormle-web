@@ -14,7 +14,22 @@ use std::collections::HashSet;
 pub async fn get_day_episode(episodes: &[Episode]) -> usize {
     let invalid_eps = episode_history::get_episode_idx_history().await.unwrap();
 
-    let opt_registered_ep = invalid_eps.iter().find(|entry| entry.day == common::get_day_offset());
+    let invalid_eps: HashSet<HistoryEntry> = {
+        let before = Instant::now();
+        let invalid_eps = ep_history_container
+            .get_episode_idx_history()
+            .await
+            .unwrap();
+        log::info!(
+            "Obtained episode history [Elapsed: {:.2?}]",
+            before.elapsed()
+        );
+        invalid_eps
+    };
+
+    let opt_registered_ep = invalid_eps
+        .iter()
+        .find(|entry| entry.day == common::get_day_offset());
     if let Some(registered_ep) = opt_registered_ep {
         return registered_ep.episode_idx;
     }
@@ -28,7 +43,14 @@ pub async fn get_day_episode(episodes: &[Episode]) -> usize {
     let mapped_idx = rand::rng().random_range(0..invalid_eps.len());
     let episode_idx = invalid_eps[mapped_idx];
 
-    episode_history::register_day_episode(episode_idx).await.unwrap();
+    {
+        let before = Instant::now();
+        ep_history_container
+            .register_day_episode(episode_idx)
+            .await
+            .unwrap();
+        log::info!("Registered new episode [Elapsed: {:.2?}]", before.elapsed());
+    }
 
     episode_idx
 }
