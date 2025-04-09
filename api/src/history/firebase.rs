@@ -12,6 +12,7 @@ use super::{EpisodeHistory, HistoryEntry};
 
 pub struct FirebaseDB(Firebase);
 
+const FIREBASE_KEY: &str = env!("FIREBASE_KEY");
 const FIREBASE_URI: &str = match ENVIRONMENT {
     crate::Environment::DEBUG => "episodes_dev",
     crate::Environment::RELEASE => "episodes",
@@ -19,8 +20,7 @@ const FIREBASE_URI: &str = match ENVIRONMENT {
 impl FirebaseDB {
     pub fn new() -> Result<FirebaseDB, UrlParseError> {
         const FIREBASE_URL: &str = env!("FIREBASE_URL");
-        const FIREBASE_AUTH_KEY: &str = ""; // env!("FIREBASE_AUTH_KEY");
-        Firebase::auth(FIREBASE_URL, FIREBASE_AUTH_KEY).map(Self)
+        Firebase::new(FIREBASE_URL).map(Self)
     }
 }
 
@@ -30,14 +30,14 @@ impl EpisodeHistory for FirebaseDB {
     async fn get_episode_idx_history(
         &mut self,
     ) -> Result<std::collections::HashSet<super::HistoryEntry>, Self::Error> {
-        let episodes_firebase = self.0.at(FIREBASE_URI);
+        let episodes_firebase = self.0.at(FIREBASE_KEY).at(FIREBASE_URI);
         let episodes = episodes_firebase.get::<Vec<HistoryEntry>>().await?;
 
         Ok(episodes.into_iter().collect())
     }
 
     async fn register_day_episode(&mut self, episode_idx: usize) -> Result<(), Self::Error> {
-        let episodes_firebase = self.0.at(FIREBASE_URI);
+        let episodes_firebase = self.0.at(FIREBASE_KEY).at(FIREBASE_URI);
 
         let mut episodes: Vec<HistoryEntry> = episodes_firebase.get::<Vec<HistoryEntry>>().await?;
 
