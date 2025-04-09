@@ -13,7 +13,6 @@ pub fn day_countdown() -> Html {
             tomorrow.and_time(NaiveTime::default())
         };
 
-
         next_day - now.naive_local()
     };
 

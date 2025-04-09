@@ -31,29 +31,21 @@ impl EpisodeHistory for FirebaseDB {
         &mut self,
     ) -> Result<std::collections::HashSet<super::HistoryEntry>, Self::Error> {
         let episodes_firebase = self.0.at(FIREBASE_URI);
-        let episodes = episodes_firebase
-            .get::<Vec<HistoryEntry>>()
-            .await?;
+        let episodes = episodes_firebase.get::<Vec<HistoryEntry>>().await?;
 
         Ok(episodes.into_iter().collect())
     }
 
     async fn register_day_episode(&mut self, episode_idx: usize) -> Result<(), Self::Error> {
         let episodes_firebase = self.0.at(FIREBASE_URI);
-        
-        let mut episodes: Vec<HistoryEntry> = episodes_firebase
-            .get::<Vec<HistoryEntry>>()
-            .await?;
+
+        let mut episodes: Vec<HistoryEntry> = episodes_firebase.get::<Vec<HistoryEntry>>().await?;
 
         let day = common::get_day_offset();
 
         episodes.push(HistoryEntry { day, episode_idx });
-        let episodes_obj: HashMap<usize, HistoryEntry> = {
-            episodes
-                .into_iter()
-                .enumerate()
-                .collect()
-        };
+        let episodes_obj: HashMap<usize, HistoryEntry> =
+            { episodes.into_iter().enumerate().collect() };
 
         episodes_firebase.update(&episodes_obj).await?;
 

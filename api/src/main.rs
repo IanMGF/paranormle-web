@@ -46,7 +46,7 @@ pub async fn get_day_episode(episodes: &[Episode]) -> usize {
             .cloned()
             .collect::<Vec<usize>>()
     };
-    
+
     let mapped_idx = rand::rng().random_range(0..invalid_eps.len());
     let episode_idx = invalid_eps[mapped_idx];
 
@@ -70,7 +70,9 @@ async fn day_episode() -> String {
 }
 
 #[shuttle_runtime::main]
-async fn main(#[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore) -> shuttle_axum::ShuttleAxum {
+async fn main(
+    #[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore,
+) -> shuttle_axum::ShuttleAxum {
     let cors_origin = secrets.get("CORS_ORIGIN").unwrap();
 
     let cors = CorsLayer::new()
