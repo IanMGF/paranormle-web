@@ -1,4 +1,5 @@
 use chrono::{NaiveTime, TimeDelta};
+use chrono_tz::America::Sao_Paulo;
 use gloo_timers::callback::Interval;
 use yew::{function_component, html, Html};
 
@@ -6,8 +7,12 @@ use yew::{function_component, html, Html};
 pub fn day_countdown() -> Html {
     let mut until_next_day: TimeDelta = {
         let now = chrono::Local::now();
-        let next_day = chrono::Local::now().date_naive() + chrono::Duration::days(1);
-        let next_day = next_day.and_time(NaiveTime::default());
+        let next_day = {
+            let today = now.with_timezone(&Sao_Paulo).date_naive();
+            let tomorrow = today + chrono::Duration::days(1);
+            tomorrow.and_time(NaiveTime::default())
+        };
+
 
         next_day - now.naive_local()
     };

@@ -17,3 +17,4 @@ common = { path = "../common" }
 gloo-net = "0.6.0"
 yew-hooks = "0.3.3"
 wasm-bindgen-futures = "0.4.50"
+chrono-tz = "0.8"
