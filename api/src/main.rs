@@ -1,4 +1,4 @@
-use api::episode_history::{EpisodeHistory, HistoryEntry};
+use api::history::{firebase::FirebaseDB, EpisodeHistory, HistoryEntry};
 use axum::{
     http::{HeaderValue, Method},
     routing::get,
@@ -13,13 +13,14 @@ use tower_http::cors::{Any, CorsLayer};
 use std::collections::HashSet;
 
 pub async fn get_day_episode(episodes: &[Episode]) -> usize {
-    let mut ep_history_container = EpisodeHistory::new().unwrap();
+    let mut ep_history_container = FirebaseDB::new().unwrap();
 
     let invalid_eps: HashSet<HistoryEntry> = {
         let before = Instant::now();
         let invalid_eps = ep_history_container
             .get_episode_idx_history()
             .await
+            .inspect_err(|e| log::error!("{}", e))
             .unwrap();
         log::info!(
             "Obtained episode history [Elapsed: {:.2?}]",
@@ -54,6 +55,7 @@ pub async fn get_day_episode(episodes: &[Episode]) -> usize {
         ep_history_container
             .register_day_episode(episode_idx)
             .await
+            .inspect_err(|e| log::error!("{}", e))
             .unwrap();
         log::info!("Registered new episode [Elapsed: {:.2?}]", before.elapsed());
     }
