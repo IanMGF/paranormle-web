@@ -37,7 +37,6 @@ pub fn guess_callback<T: GuessEvent>(
     has_guessed: UseStateHandle<bool>,
 ) -> Callback<T> {
     Callback::from({
-        let episodes = (*EPISODES_LIST).clone();
         let guesses = guesses_state.clone();
         let correct = correct_ep.clone();
 
@@ -49,7 +48,7 @@ pub fn guess_callback<T: GuessEvent>(
             if guesses.iter().any(|ep| ep.title == guess) {
                 return;
             }
-            let Some(ep) = episodes.iter().find(|ep| ep.title == guess) else {
+            let Some(ep) = (*EPISODES_LIST).iter().find(|ep| ep.title == guess) else {
                 return;
             };
 

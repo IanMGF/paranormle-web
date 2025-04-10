@@ -67,20 +67,18 @@ fn header() -> Html {
 
 #[function_component(Guesser)]
 pub fn guesser() -> Html {
-    let episodes: Arc<Vec<Episode>> = (*EPISODES_LIST).clone();
     let episode: UseStateHandle<Option<Rc<Episode>>> = use_state(|| None);
 
     let guesses: UseStateHandle<Vec<Rc<Episode>>> = use_state(Vec::new);
     let has_guessed: UseStateHandle<bool> = use_state(|| false);
 
     use_effect_with((), {
-        let episodes = episodes.clone();
         let episode = episode.clone();
 
         move |_| {
             wasm_bindgen_futures::spawn_local(async move {
                 let episode_idx = daily_episode::get_day_episode().await;
-                episode.set(episode_idx.ok().map(|idx| Rc::new(episodes[idx].clone())));
+                episode.set(episode_idx.ok().map(|idx| Rc::new((*EPISODES_LIST)[idx].clone())));
             });
         }
     });
