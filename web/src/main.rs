@@ -25,7 +25,7 @@ fn head() -> Html {
 
 #[function_component(Body)]
 fn body() -> Html {
-    let element = Theme::gen_day_element();
+    let element = use_memo((), |_| { Theme::gen_day_element() });
     let bg = element.get_bg();
 
     let body_style: Style = style!(
@@ -46,12 +46,12 @@ fn body() -> Html {
 
     html! {
         <div class={ body_style.get_class_name().to_owned() }>
-            <h1 class="centered">{ "Paranormle" }</h1>
+            <h1 class={ "centered" }>{ "Paranormle" }</h1>
             <ResetCountdown />
             <Guesser />
 
-            <span id="creditos-wpp">
-                <a href="https://x.com/desconjurado/status/1543281129385594881">
+            <span id={ "creditos-wpp" }>
+                <a href={ "https://x.com/desconjurado/status/1543281129385594881" }>
                     { "Wallpapers por Sumo (@desconjurado)" }
                 </a>
             </span>

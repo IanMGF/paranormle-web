@@ -5,7 +5,8 @@ mod input;
 use common::{episode::Episode, EPISODES_LIST};
 use guess::Guess;
 use input::Input;
-use std::{rc::Rc, sync::Arc};
+use yew_hooks::use_async;
+use std::rc::Rc;
 use stylist::style;
 use yew::prelude::*;
 
@@ -65,25 +66,43 @@ fn header() -> Html {
     }
 }
 
+async fn fetch_episode() -> Result<Rc<Episode>, Rc<gloo_net::Error>> {
+    let episode_idx = daily_episode::get_day_episode().await?;
+    Ok(Rc::new((*EPISODES_LIST)[episode_idx].clone()))
+}
+
 #[function_component(Guesser)]
 pub fn guesser() -> Html {
-    let episode: UseStateHandle<Option<Rc<Episode>>> = use_state(|| None);
-
     let guesses: UseStateHandle<Vec<Rc<Episode>>> = use_state(Vec::new);
     let has_guessed: UseStateHandle<bool> = use_state(|| false);
+    
+    let ep_fetch = use_async(fetch_episode());
 
     use_effect_with((), {
-        let episode = episode.clone();
-
+        let ep_fetch = ep_fetch.clone();
         move |_| {
-            wasm_bindgen_futures::spawn_local(async move {
-                let episode_idx = daily_episode::get_day_episode().await;
-                episode.set(episode_idx.ok().map(|idx| Rc::new((*EPISODES_LIST)[idx].clone())));
-            });
+            ep_fetch.run();
         }
     });
-
-    let Some(today_ep): Option<Rc<Episode>> = (*episode).clone() else {
+    
+    if ep_fetch.loading {
+        return html! {
+            <span class="centered" style="color: white; font-size: 28px; font-family: AdobeHebrew; font-weight: bold;">
+                { "Recebendo os Sinais..." }
+            </span>
+        };
+    }
+    
+    if let Some(ref err) = ep_fetch.error {
+        log::error!("{}", err);
+        return html! {
+            <span class="centered" style="color: white; font-size: 28px; font-family: AdobeHebrew; font-weight: bold;">
+                { "Eita, deu erro..." }
+            </span>
+        };
+    }
+    
+    let Some(ref today_ep): Option<Rc<Episode>> = ep_fetch.data else {
         return html! {
             <span class="centered" style="color: white; font-size: 28px; font-family: AdobeHebrew; font-weight: bold;">
                 { "Recebendo os Sinais..." }
@@ -96,7 +115,7 @@ pub fn guesser() -> Html {
             .iter()
             .map(|ep| html! {
                 <li style="list-style-type: none;">
-                <Guess episode={ ep } correct={ &today_ep } />
+                <Guess episode={ ep } correct={ today_ep } />
                 </li>
             })
             .rev()
