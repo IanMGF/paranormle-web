@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDate, NaiveTime, TimeDelta};
+use chrono::{NaiveDate, NaiveTime, TimeDelta};
 use chrono_tz::America::Sao_Paulo;
 use gloo_timers::callback::Interval;
 use yew::{function_component, html, use_state, Html, UseStateHandle};
@@ -7,7 +7,7 @@ fn time_until_next_day(today: NaiveDate) -> TimeDelta {
     let now = chrono::Local::now();
     let next_day = {
         let tomorrow = today + chrono::Duration::days(1);
-        tomorrow.and_time(NaiveTime::default()) - Duration::hours(6) - Duration::minutes(9)
+        tomorrow.and_time(NaiveTime::default())
     };
 
     next_day - now.naive_local()
