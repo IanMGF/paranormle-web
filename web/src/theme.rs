@@ -16,6 +16,10 @@ impl Theme {
         let day_zero: NaiveDate = chrono::NaiveDate::from_ymd_opt(2025, 2, 20).unwrap();
         let curr_date = chrono::Local::now().date_naive();
 
+        if curr_date.signed_duration_since(NaiveDate::from_ymd_opt(2025, 6, 11).unwrap()) < TimeDelta::days(7) {
+            return Theme(Element::Death)
+        }
+        
         let day_count = curr_date.signed_duration_since(day_zero).num_days() as usize;
 
         const ELEMENTS: [Element; 5] = [
