@@ -19,7 +19,7 @@ impl Theme {
         let curr_date = chrono::Local::now().date_naive();
 
         if curr_date == NaiveDate::from_ymd_opt(2025, 7, 12).unwrap() {
-            return Theme(Element::Death);
+            return Theme(Element::DeathKnowledge);
         }
 
         let day_count = curr_date.signed_duration_since(day_zero).num_days() as usize;
