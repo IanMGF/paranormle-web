@@ -1,14 +1,16 @@
 use chrono::{NaiveDate, TimeDelta};
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Element {
     Blood,
     Death,
     Knowledge,
     Energy,
     Fear,
+    DeathKnowledge,
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Theme(Element);
 
 impl Theme {
@@ -16,10 +18,10 @@ impl Theme {
         let day_zero: NaiveDate = chrono::NaiveDate::from_ymd_opt(2025, 2, 20).unwrap();
         let curr_date = chrono::Local::now().date_naive();
 
-        if curr_date.signed_duration_since(NaiveDate::from_ymd_opt(2025, 6, 11).unwrap()) < TimeDelta::days(7) {
-            return Theme(Element::Death)
+        if curr_date == NaiveDate::from_ymd_opt(2025, 7, 12).unwrap() {
+            return Theme(Element::Death);
         }
-        
+
         let day_count = curr_date.signed_duration_since(day_zero).num_days() as usize;
 
         const ELEMENTS: [Element; 5] = [
@@ -42,6 +44,7 @@ impl Theme {
             Element::Knowledge => "Conhecimento.jpeg",
             Element::Energy => "Energia.jpeg",
             Element::Fear => "Medo.jpeg",
+            Element::DeathKnowledge => "Conhecimento+Morte.jpeg",
         }
     }
 
@@ -52,6 +55,7 @@ impl Theme {
             Element::Knowledge => "#bdb55b",
             Element::Energy => "#b43cba",
             Element::Fear => "#bdbdbd",
+            Element::DeathKnowledge => "#96914e",
         }
     }
 
