@@ -60,7 +60,7 @@ pub struct EpisodeGuessResult {
     pub campaign: InfoPiece<String, bool>,
     pub duration: InfoPiece<u64, Ordering>,
     pub year: InfoPiece<i32, bool>,
-    pub players: InfoPiece<u8, Ordering>,
+    pub players: InfoPiece<u32, Ordering>,
     pub cinematic: InfoPiece<bool, bool>,
 }
 

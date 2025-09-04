@@ -14,7 +14,7 @@ pub struct Episode {
     pub cover_url: String,
     pub cover_path: String,
     pub number: u32,
-    pub players: NonZero<u8>,
+    pub players: NonZero<u32>,
     pub has_cinematic: bool,
 }
 
